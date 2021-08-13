@@ -1,24 +1,9 @@
-const express = require("express");
-const router = express.Router();
-const { validationResult } = require('express-validator'); //For Validation
-const HttpError = require("../models/http-error");
-
 const Attendance = require("../models/attendance");
 const HttpError = require("../models/http-error");
 
 
 //Add attendance
-
 const addNewAttendance = async (req, res, next) => {
-    /**
-     * Validate data coming from the req before saving them,
-     * to DB.
-     */
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        throw new HttpError("Invalid data, check inputs again", 422);
-    }
-
     const at = new Date(req.body.date); //creating a date object for arrive time
     const lt = new Date(req.body.date); //creating a date object for leave time
   
@@ -50,7 +35,7 @@ const addNewAttendance = async (req, res, next) => {
         return next(error);
     }
     res.status(201).json({ attendance:  createattendance });
-}
+};
 
 
 
@@ -72,4 +57,6 @@ const addNewAttendance = async (req, res, next) => {
 
 //Exports
 
-exports.addNewAttendance = addNewAttendance;
+module.exports = {
+    addNewAttendance
+  };
