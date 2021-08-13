@@ -1,18 +1,8 @@
-const express = require("express");
-const router = express.Router();
-const { validationResult } = require('express-validator'); //For Validation
-const HttpError = require("../models/http-error");
-
 const Leave = require('../models/leave');
 const HttpError = require("../models/http-error");
 
 //Add Leave
 const addNewLeave = async (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        throw new HttpError("Invalid data, check inputs again", 422);
-    }
-
     const createLeave = new Leave({
       empID: req.body.empID,
       time: req.body.time,
@@ -30,7 +20,7 @@ const addNewLeave = async (req, res, next) => {
     }
 
     res.status(201).json({ leave: createLeave });
-}
+};
 
 
 //Retrieve  Leave
@@ -48,4 +38,6 @@ const addNewLeave = async (req, res, next) => {
 
 //Exports
 
-exports.addNewLeave = addNewLeave;
+module.exports = {
+    addNewLeave
+  };
