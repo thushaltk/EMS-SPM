@@ -1,0 +1,12 @@
+.icon-btn {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.icon-danger:hover {
+  color: #ef5350;
+}
+
+.icon-warning:hover {
+  color: #F57F17
+}
