@@ -1,4 +1,5 @@
 import { Component, OnInit, DoCheck, ChangeDetectionStrategy} from '@angular/core';
+import { OtherService } from 'services/other.service';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,12 @@ import { Component, OnInit, DoCheck, ChangeDetectionStrategy} from '@angular/cor
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() {
+  clicked: boolean = false;
+  constructor(private otherService: OtherService) {
   }
   ngOnInit(): void {}
+
+  clickHere(){
+    this.otherService.setClicked(true);
+  }
 }

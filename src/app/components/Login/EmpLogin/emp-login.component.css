@@ -1,0 +1,9 @@
+.empLogin-anim{
+    transform: translateX(30%);
+    transition: .3s ease-out;
+}
+
+.empLogin{
+    transform: translateX(100%);        
+    position: fixed;
+}
