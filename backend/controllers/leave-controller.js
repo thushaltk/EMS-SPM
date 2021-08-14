@@ -18,26 +18,87 @@ const addNewLeave = async (req, res, next) => {
         const error = new HttpError("Cannot add data to database :(....", 500);
         return next(error);
     }
-
     res.status(201).json({ leave: createLeave });
 };
 
 
 //Retrieve  Leave
+const getLeaves = async (req, res, next) => {
+    let leaves;
+    try {
+        leaves = await Leave.find();
+    } catch (err) {
+      throw new HttpError("Fetching leave failed, try again later", 500);
+    }
+    res.send(leaves);
+};
 
 
 //Retrieve  Leave by empID
+const getLeaveByID = async (req, res, next) => {
+    const leavID = req.params.id;
+    let leave;
+    try {
+        leave = await Leave.find({ _id: leavID });
+      } catch (err) {
+        const error = new HttpError("Cannot fine the requested data..", 500);
+        return error;
+      }
+      res.send({ message: "Data retreived successfully", data: leave });
+};
 
 
 //Update  leave status
 
+const updateLeave = async (req, res, next) => {
+    const leavID = req.params.id;
+    const {empID, time, startDate,endDate, reason, status} = req.body;
+    const existingLeave;
+    try{
+        existingLeave = await Leave.findOne({_id: leavID});
+    }catch(err){
+        const error = new HttpError("Error occured", 500);
+        return error;
+    }
+    if(!leave){
+        const error =  new HttpError("Data not found", 401);
+        return error;
+    }else{
+        existingLeave.empID = empID;
+        existingLeave.time = time;
+        existingLeave.startDate = startDate;
+        existingLeave.endDate = endDate;
+        existingLeave.reason = reason;
+        existingLeave.status = status;
+        try{
+            await existingLeave.save();
+        }catch(err){
+            const error = new HttpError('Failed to update data', 500);
+            return error;
+        }
+        res.send({message: 'Updated successfully', data: existingLeave});
+    }
+};
 
 
 //Delete Announcemets
+const deleteLeave = async (req, res, next) => {
+    const leavID = req.params.id;
+    try {
+      await Leave.findOneAndRemove({ _id: leavID });
+    } catch (err) {
+      const error = new HttpError("Cannot find requested data...", 500);
+      return error;
+    }
+    res.send({ message: "Leave Deleted!" });
+  };
 
 
 //Exports
-
 module.exports = {
-    addNewLeave
+    addNewLeave,
+    getLeaves,
+    getLeaveByID,
+    updateLeave,
+    deleteLeave
   };
