@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const longLeaveSchema = mongoose.Schema({
+const LeaveSchema = mongoose.Schema({
   empID: {type: String, required: true},
   time: {type: String, required: true},
   startDate: {type: String, required: true},
@@ -8,4 +8,4 @@ const longLeaveSchema = mongoose.Schema({
   status: {type: String, required: true}
 });
 
-module.exports = mongoose.model('LongLeave', longLeaveSchema);
+module.exports = mongoose.model('LongLeave', LeaveSchema);

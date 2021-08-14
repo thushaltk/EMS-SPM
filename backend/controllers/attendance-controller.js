@@ -50,6 +50,7 @@ const getAttendances = async (req, res, next) => {
   };
 
 
+
 //Get Attendance by ID
 const getAttendanceByID = async (req, res, next) => {
     const attID = req.params.id;
@@ -57,11 +58,11 @@ const getAttendanceByID = async (req, res, next) => {
     try {
         attendance = await Attendance.find({ _id: attID });
       } catch (err) {
-        const error = new HttpError("Cannot finr the requested data..", 500);
+        const error = new HttpError("Cannot fine the requested data..", 500);
         return error;
       }
       res.send({ message: "Data retreived successfully", data: attendance });
-    };
+  };
 
 
 //Update Attendance
@@ -106,7 +107,7 @@ const updateAttendance = async (req, res, next) => {
         }
         res.send({message: 'Updated successfully', data: existingAttendance});
     }
-}
+};
 
 
 //Delete Attendance
@@ -121,8 +122,8 @@ const deleteAttendance = async (req, res, next) => {
     res.send({ message: "Attendance Deleted!" });
   };
 
-//Exports
 
+//Exports
 module.exports = {
     addNewAttendance,
     getAttendances,
