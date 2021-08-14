@@ -16,7 +16,6 @@ const addEmployee = async (req, res, next) => {
     empDes: req.body.empDes,
     doj: req.body.doj,
     comment: req.body.comment,
-    password: ""
   });
 
   try {
@@ -91,24 +90,6 @@ const updateEmployee = async (req, res, next) => {
   }
 }
 
-//Update password
-const updatePassword = async (req, res, next) => {
-  const {email, password} = req.body;
-  let employee;
-  try{
-    employee = await Employee.findOne({email: email});
-  }catch(err){
-    return err;
-  }
-
-  if(!employee){
-    return new HttpError('User doesnot exist', 401);
-  }else{
-    employee.password = password;
-  }
-  res.send({message: 'Password updated successfully', data: employee});
-}
-
 
 //Reteive Employees by designation
 const getEmployeeByDesignation = async (req, res, next) => {
@@ -141,6 +122,5 @@ module.exports = {
   getEmployees,
   getEmployeeByID,
   deleteEmployee,
-  updateEmployee,
-  updatePassword
+  updateEmployee
 };
