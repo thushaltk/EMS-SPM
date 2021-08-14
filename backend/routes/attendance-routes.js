@@ -6,4 +6,8 @@ const router = express.Router();
 const attendanceController = require("../controllers/attendance-controller");
 
 router.post("/addNewAttendance", attendanceController.addNewAttendance);
+router.get("/getAttendances", attendanceController.getAttendances);
+router.get("/getAttendanceByID/:id", attendanceController.getAttendanceByID);
+router.put("/updateAttendance/:id", attendanceController.updateAttendance);
+router.put("/deleteAttendance/:id", attendanceController.deleteAttendance);
 
