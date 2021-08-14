@@ -1,0 +1,105 @@
+<div style="background-color: #e0e0e0">
+  <div class="jumbotron container-fluid" [ngClass]="{ bgImage: true }">
+    <div class="container" style="margin: auto" #top>
+      <br /><br /><br /><br /><br /><br />
+      <h1 [ngClass]="{ headingsLandingPage: true }">Welcome</h1>
+      <h2 [ngClass]="{ headingsLandingPage: true }">
+        Employee Information System
+      </h2>
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <button
+      [ngClass]="{ buttonLandingPage: true }"
+      type="button"
+      style="font-size: 50px; margin-left: 40%"
+      (click)="scroll(middle)"
+    >
+      EXPLORE
+    </button>
+
+    <br />
+  </div>
+  <div class="container-fluid text-center" #middle>
+    <div class="row">
+      <div class="col-sm-6">
+        <div
+          class="card pull-right cardSize"
+          style="
+            width: 40rem;
+            border-radius: 10px 10px 10px 10px;
+            border-color: #01579b;
+          "
+        >
+          <div class="card-body">
+            <h1 class="card-title">Employees</h1>
+            <img src="../../assets/images/admin.png" alt="employee.jpeg" />
+            <p
+              class="card-text"
+              style="font-family: cursive; font-style: oblique; font-size: 15px"
+            >
+              "Don’t limit yourself. Many people limit themselves to what they
+              think they can do. You can go as far as your mind lets you. What
+              you believe, remember, you can achieve." – Mary Kay Ash
+            </p>
+            <br />
+            <a style="text-decoration: none">
+              <button
+                [ngClass]="{ buttonLandingPage: true }"
+                type="button"
+                style="font-size: 30px"
+                (click)="onEmpNavigate()"
+              >
+                LOGIN
+              </button>
+              <br /><br /><br /><br />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div
+          class="card cardSize"
+          style="
+            width: 40rem;
+            border-radius: 10px 10px 10px 10px;
+            border-color: #01579b;
+          "
+        >
+          <div class="card-body">
+            <h1 class="card-title">Administrators</h1>
+            <img src="../../assets/images/admin.png" alt="employee.jpeg" />
+            <p
+              class="card-text"
+              style="font-family: cursive; font-style: oblique; font-size: 15px"
+            >
+              “The trouble with organizing a thing is that pretty soon folks get
+              to paying more attention to the organization than to what they're
+              organized for.” - Laura Ingalls Wilder
+            </p>
+            <br />
+            <a style="text-decoration: none">
+              <button
+                style="margin-left: 20%"
+                [ngClass]="{ buttonLandingPage: true }"
+                type="button"
+                style="font-size: 30px"
+                (click)="onAdminNavigate()"
+              >
+                LOGIN
+              </button>
+              <br /><br /><br /><br />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="btn btn-primary pull-right"
+      (click)="scroll(top)"
+    >
+      GO TO TOP
+    </button>
+    <br /><br /><br /><br /><br />
+  </div>
+</div>

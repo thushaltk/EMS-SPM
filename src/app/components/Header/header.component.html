@@ -1,5 +1,10 @@
-<nav id="headerID" class="navbar navbar-expand-lg">
-  <a style="font-size: 25px; font-weight: 500;" class="navbar-brand" href="#">EMS-SPM</a>
+<nav
+  id="headerID"
+  class="navbar navbar-expand-lg navbar-anim "
+>
+  <a style="font-size: 25px; font-weight: 500" class="navbar-brand" href="#"
+    >EMS-SPM</a
+  >
   <button
     class="navbar-toggler collapsed"
     type="button"
@@ -11,15 +16,21 @@
   >
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div style="width: 100%;" class="collapse navbar-collapse" id="navbarNav">
-    <ul style="width: 100%;" class="navbar-nav">
-      <div style="display: flex;" class="ms-auto">
+  <div style="width: 100%" class="collapse navbar-collapse" id="navbarNav">
+    <ul style="width: 100%" class="navbar-nav">
+      <div style="display: flex; height: 100%" class="ms-auto">
         <li>
-          <a class="nav-link" href="#">Employee Login</a>
+          <div class="nav-link-border">
+            <a (click)="clickHere()" class="nav-link" href="#"
+              >Employee Login</a
+            >
+          </div>
         </li>
         <li>
+          <div class="nav-link-border">
             <a class="nav-link" href="#">Admin Login</a>
-          </li>
+          </div>
+        </li>
       </div>
     </ul>
   </div>

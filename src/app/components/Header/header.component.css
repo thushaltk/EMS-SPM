@@ -6,13 +6,29 @@
 #headerID{
     background-color: #3F51B5;
     width: 100%;
-    padding: 30px;
+    padding: 20px;
     overflow: hidden;
     transition: 0.4s;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    
 
 }
+
+/* .navbar-anim{
+    transform: translateX(50%);
+    transition: .3s ease-out;
+} */
+
+
 
 #headerID a{
     color: aliceblue;
+    
 }
+
+.nav-link-border:hover{
+    background-color: #283593;
+    border-radius: 10%;
+    transition: 0.4s;
+}
+
