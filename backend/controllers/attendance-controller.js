@@ -26,7 +26,6 @@ const addNewAttendance = async (req, res, next) => {
       arriveTime: at,
       leaveTime: lt,
     })
-
     try {
         await createattendance.save(); //savea data to db.
         console.log("Data saved successfully in the DB....:)");
@@ -111,7 +110,16 @@ const updateAttendance = async (req, res, next) => {
 
 
 //Delete Attendance
-
+const deleteAttendance = async (req, res, next) => {
+    const attID = req.params.id;
+    try {
+      await Attendance.findOneAndRemove({ _id: attID });
+    } catch (err) {
+      const error = new HttpError("Cannot find requested data...", 500);
+      return error;
+    }
+    res.send({ message: "Attendance Deleted!" });
+  };
 
 //Exports
 
@@ -119,5 +127,6 @@ module.exports = {
     addNewAttendance,
     getAttendances,
     getAttendanceByID,
-    updateAttendance
+    updateAttendance,
+    deleteAttendance
   };
