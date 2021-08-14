@@ -11,7 +11,7 @@ const employeeSchema = mongoose.Schema({
   empDes: { type: String, required: true },
   doj: { type: String, required: true },
   comment: { type: String },
-  password: { type: String },
+  password: { type: String }
 });
 
 module.exports = mongoose.model("Employee", employeeSchema);
