@@ -2,7 +2,7 @@
 
 ![employee management system](https://3.imimg.com/data3/XM/QN/MY-9237150/employee-management-system-500x500.jpg)
 
-##Commands to run project
+## Commands to run project
 
 1. `npm install`
 2. `ng serve` runs frontend server (Angular) on PORT 4200
