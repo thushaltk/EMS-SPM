@@ -105,16 +105,38 @@ const getEmployeeByDesignation = async (req, res, next) => {
 
 //Delete Employees
 const deleteEmployee = async (req, res, next) => {
-  const emID = req.params.id;
+  const empID = req.params.id;
   try {
-    await Employee.findOneAndRemove({ _id: emID });
+    await Employee.findOneAndRemove({ _id: empID });
   } catch (err) {
     const error = new HttpError("Cannot find requested data...", 500);
     return error;
   }
-
   res.send({ message: "Employee Deleted!" });
 };
+
+//Update password
+const updatePassword = async (req, res, next) => {
+  const {email, password} = req.body;
+  let employee;
+  try{
+    employee = await Employee.findOne({email: email});
+  }catch(err){
+    return err;
+  }
+  if(!employee){
+    return new HttpError('User does not exist', 401);
+  }else{
+    employee.password = password;
+    try{
+      await employee.save();
+    }
+    catch(err){
+      return err;
+    }
+  }
+  res.send({message: 'Password update successfully', data: employee});
+}
 
 module.exports = {
   getEmployeeByDesignation,
@@ -122,5 +144,6 @@ module.exports = {
   getEmployees,
   getEmployeeByID,
   deleteEmployee,
-  updateEmployee
+  updateEmployee,
+  updatePassword
 };
