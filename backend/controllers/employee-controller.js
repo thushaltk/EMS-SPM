@@ -17,7 +17,6 @@ const addEmployee = async (req, res, next) => {
     doj: req.body.doj,
     comment: req.body.comment,
   });
-
   try {
     await createEmployee.save();
     console.log("Employee added successfully in the DB....:)");
@@ -42,9 +41,9 @@ const getEmployees = async (req, res, next) => {
 //Reteive Employees by ID
 const getEmployeeByID = async (req, res, next) => {
   const empID = req.params.id;
-  let employees;
+  let employee;
   try {
-    employees = await Employee.find({ _id: annID });
+    employee = await Employee.find({ _id: empID });
   } catch (err) {
     const error = new HttpError("Cannot finr the requested data..", 500);
     return error;
@@ -59,7 +58,7 @@ const updateEmployee = async (req, res, next) => {
   const {fullName, dob, nic, empID, gender, address, cnumber, email, empDes, doj, comment} = req.body;
   const existingEmployee;
   try{
-      existingEmployee = await Employee.findOne({_id: annID});
+      existingEmployee = await Employee.findOne({_id: empID});
   }catch(err){
       const error = new HttpError("Error occured", 500);
       return error;
