@@ -9,11 +9,16 @@ import { OtherService } from 'services/other.service';
 })
 export class HeaderComponent implements OnInit {
   clicked: boolean = false;
+  toggled: boolean = false;
   constructor(private otherService: OtherService) {
   }
   ngOnInit(): void {}
 
   clickHere(){
     this.otherService.setClicked(true);
+  }
+
+  OnToggle(){
+    this.toggled = !this.toggled;
   }
 }

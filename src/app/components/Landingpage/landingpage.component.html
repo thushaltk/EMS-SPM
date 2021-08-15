@@ -8,24 +8,27 @@
       </h2>
     </div>
     <br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <button
-      [ngClass]="{ buttonLandingPage: true }"
-      type="button"
-      style="font-size: 50px; margin-left: 40%"
-      (click)="scroll(middle)"
-    >
-      EXPLORE
-    </button>
+    <div style="width: 100%; display: flex; justify-content: center;">
+      <button
+        [ngClass]="{ buttonLandingPage: true }"
+        type="button"
+        style="font-size: 30px"
+        (click)="scroll(middle)"
+      >
+        EXPLORE
+      </button>
+
+    </div>
 
     <br />
   </div>
-  <div class="container-fluid text-center" #middle>
+  <div style="padding: 20px;" class="container-fluid text-center" #middle>
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-6" style="padding-bottom: 10px;">
         <div
           class="card pull-right cardSize"
           style="
-            width: 40rem;
+            width: 100%;
             border-radius: 10px 10px 10px 10px;
             border-color: #01579b;
           "
@@ -60,7 +63,7 @@
         <div
           class="card cardSize"
           style="
-            width: 40rem;
+            width: 100%;
             border-radius: 10px 10px 10px 10px;
             border-color: #01579b;
           "

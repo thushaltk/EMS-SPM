@@ -1,37 +1,49 @@
-<nav
-  id="headerID"
-  class="navbar navbar-expand-lg navbar-anim "
->
-  <a style="font-size: 25px; font-weight: 500" class="navbar-brand" href="#"
-    >EMS-SPM</a
+<section role="navigation">
+  <nav
+    id="headerID"
+    class="
+      navbar navbar-expand-lg navbar-anim navbar-inverse
+      bg-inverse
+      navbar-toggleable-sm
+    "
   >
-  <button
-    class="navbar-toggler collapsed"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNav"
-    aria-controls="navbarNav"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div style="width: 100%" class="collapse navbar-collapse" id="navbarNav">
-    <ul style="width: 100%" class="navbar-nav">
-      <div style="display: flex; height: 100%" class="ms-auto">
-        <li>
-          <div class="nav-link-border">
-            <a (click)="clickHere()" class="nav-link" href="#"
-              >Employee Login</a
-            >
-          </div>
-        </li>
-        <li>
-          <div class="nav-link-border">
-            <a class="nav-link" href="#">Admin Login</a>
-          </div>
-        </li>
-      </div>
-    </ul>
-  </div>
-</nav>
+    <a style="font-size: 25px; font-weight: 500" class="navbar-brand" href="#"
+      >EMS-SPM</a
+    >
+    <button
+      class="navbar-toggler navbar-toggler-right collapsed"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      (click)="OnToggle()"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      style="width: 100%"
+      [ngClass]="{ collapse: !toggled }"
+      class="navbar-collapse"
+      id="navbarNav"
+    >
+      <ul style="width: 100%" class="navbar-nav">
+        <div class="changeMargin">
+          <li>
+            <div class="nav-link-border">
+              <a (click)="clickHere()" class="nav-link" href="#"
+                >Employee Login</a
+              >
+            </div>
+          </li>
+          <li>
+            <div class="nav-link-border">
+              <a class="nav-link" href="#">Admin Login</a>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </nav>
+</section>
