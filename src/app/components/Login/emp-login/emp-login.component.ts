@@ -1,4 +1,4 @@
-import { OtherService } from './../../../../../services/other.service';
+import { OtherService } from '../../../../../services/other.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
