@@ -13,11 +13,11 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {}
 
   onEmpNavigate() {
-    this.router.navigate(['login/emp']);
+    this.router.navigate(['login/empLogin']);
   }
 
   onAdminNavigate() {
-    this.router.navigate(['login/admin']);
+    this.router.navigate(['login/adminLogin']);
   }
 
   scroll(el: HTMLElement) {

@@ -4,6 +4,21 @@
 }
 
 .empLogin{
-    transform: translateX(100%);        
+    transform: translateX(100%);
     position: fixed;
+}
+
+
+.custom-emp{
+  height: 100vh;
+  margin: 0;
+  position: absolute;
+  top: 20%
+}
+
+@media screen and (max-device-width: 894px) {
+  .custom-emp{
+    position: relative;
+    display: list-item;
+  }
 }
