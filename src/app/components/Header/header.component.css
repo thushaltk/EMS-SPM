@@ -5,6 +5,10 @@
   float: right;
 }
 
+.nav-link-border:active{
+  color: #ee9e23;
+}
+
 #headerID {
   background-color: #3f51b5;
   width: 100%;
