@@ -1,5 +1,6 @@
 import { OtherService } from '../../../../../services/other.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-emp-login',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class EmpLoginComponent implements OnInit {
   clicked: boolean = false;
 
-  constructor(private otherService: OtherService) { }
+  constructor(private otherService: OtherService, private router: Router) { }
 
   ngOnInit(): void {
     setTimeout(()=> {
@@ -17,6 +18,10 @@ export class EmpLoginComponent implements OnInit {
       console.log(this.clicked);
 
     }, 3000)
+  }
+
+  onNavigate() : void{
+    this.router.navigate(['login/emp/changePassword']);
   }
 
 

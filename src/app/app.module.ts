@@ -9,6 +9,9 @@ import {AdminLoginComponent} from './components/Login/admin-login/admin-login.co
 import { LandingPageComponent } from './components/Landingpage/landingpage.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ChangePasswordComponent } from './components/Login/emp-login/change-password/change-password.component';
+import { DashboardComponent } from './components/Admin/dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 
 @NgModule({
@@ -18,11 +21,14 @@ import { ChangePasswordComponent } from './components/Login/emp-login/change-pas
     HeaderComponent,
     EmpLoginComponent,
     AdminLoginComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    DashboardComponent
   ],
   imports: [
     AppRoutingModule,
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [OtherService],
   bootstrap: [AppComponent]

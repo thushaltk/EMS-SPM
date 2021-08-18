@@ -1,0 +1,44 @@
+a{
+    color: azure;
+    text-decoration: none;
+    font-size: 20px;
+    margin: auto;
+    cursor: pointer;
+}
+
+a:hover{
+    color: #ee9e23;
+}
+
+mat-sidenav-container {
+  height: 100%;
+  color: azure;
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+mat-sidenav {
+  background-color: #3f51b5;
+  height: 100%;
+  width: 300px;
+  left: 0;
+}
+
+/* @media (max-width: 768px) {
+  #sidebar {
+    margin-left: -250px;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+} */
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+

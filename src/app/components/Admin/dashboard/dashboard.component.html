@@ -1,0 +1,36 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [(opened)]="opened">
+    <div class="text-center" style="width: 100%; padding-top: 20px; ">
+      <img
+        src="../../assets/images/admin.png"
+        alt="admin icon"
+        style="margin:0"
+      />
+      <br/><br/>
+      <h3 class="text-center">ADMINISTRATOR</h3>
+    </div>
+    <hr/>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <a [routerLink]="['']">Home</a>
+    </div>
+    <hr/>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <a [routerLink]="['']">Announcements</a>
+    </div>
+    <hr/>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <a [routerLink]="['']">Training Programs</a>
+    </div>
+    <hr/>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <a [routerLink]="['../login/empLogin']">Employees</a>
+    </div>
+    <hr/>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <a [routerLink]="['']">Attendance and leave</a>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- <router-outlet></router-outlet> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
