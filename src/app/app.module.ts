@@ -12,6 +12,13 @@ import { ChangePasswordComponent } from './components/Login/emp-login/change-pas
 import { DashboardComponent } from './components/Admin/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { AnnouncementsComponent } from './components/announcements/announcements.component';
+import { AddAnnouncementComponent } from './components/announcements/add-announcement/add-announcement.component';
+import { AdminProfileComponent } from './components/Admin/admin-profile/admin-profile.component';
+import { AnnouncementService } from 'services/announcements.service';
+import { HttpClientModule } from '@angular/common/http';
+import { TrainingProgramsComponent } from './components/training-programs/training-programs.component';
+import { AddTrainingProgramsComponent } from './components/training-programs/add-training-programs/add-training-programs.component';
 
 
 @NgModule({
@@ -22,15 +29,21 @@ import { MaterialModule } from './material.module';
     EmpLoginComponent,
     AdminLoginComponent,
     ChangePasswordComponent,
-    DashboardComponent
+    DashboardComponent,
+    AnnouncementsComponent,
+    AddAnnouncementComponent,
+    AdminProfileComponent,
+    TrainingProgramsComponent,
+    AddTrainingProgramsComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
   ],
-  providers: [OtherService],
+  providers: [OtherService, AnnouncementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

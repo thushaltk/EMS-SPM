@@ -5,6 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './components/Landingpage/landingpage.component';
 import { ChangePasswordComponent } from './components/Login/emp-login/change-password/change-password.component';
 import { DashboardComponent } from './components/Admin/dashboard/dashboard.component';
+import { AddAnnouncementComponent } from './components/announcements/add-announcement/add-announcement.component';
+import { AnnouncementsComponent } from './components/announcements/announcements.component';
+import { AdminProfileComponent } from './components/Admin/admin-profile/admin-profile.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
@@ -16,8 +19,15 @@ const appRoutes: Routes = [
   { path: 'login/adminLogin', component: AdminLoginComponent },
   {
     path: 'admin',
-    component: DashboardComponent,
-    children: [{ path: 'dashboard', component: DashboardComponent }],
+    component: AdminProfileComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      {
+        path: 'announcements',
+        component: AnnouncementsComponent,
+        children: [{ path: 'add', component: AddAnnouncementComponent }],
+      },
+    ],
   },
 ];
 

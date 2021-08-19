@@ -1,36 +1,45 @@
-<mat-sidenav-container>
-  <mat-sidenav mode="side" [(opened)]="opened">
-    <div class="text-center" style="width: 100%; padding-top: 20px; ">
-      <img
-        src="../../assets/images/admin.png"
-        alt="admin icon"
-        style="margin:0"
-      />
-      <br/><br/>
-      <h3 class="text-center">ADMINISTRATOR</h3>
+<div style="padding: 30px;">
+  <h1>Announcements</h1>
+  <mat-spinner *ngIf = "isLoading"></mat-spinner>
+  <!-- <div  style="overflow-y: scroll; height:400px; width: 100%;" *ngIf = "!isLoading">
+    <div class="container pull-left" *ngFor="let announcement of announcements" style="background-color:#E6E9E5; width: 1000px; height: fit-content;">
+      <div class="card">
+        <div class="card-header">
+         ***
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{announcement.title}}</h4>
+          <p class="card-text">{{announcement.content}}</p>
+          <p class="card-text">{{announcement.date}}</p>
+          <p class="card-text" [ngStyle]="{'color': announcement.priority == 'HIGH' ? 'red' : 'green'}">{{announcement.priority}} priority</p>
+          <p class="card-text">Validity: {{announcement.validity}}</p>
+        </div>
+      </div>
     </div>
-    <hr/>
-    <div style="width: 100%; display: flex; justify-content: center;">
-        <a [routerLink]="['']">Home</a>
+
+  </div> -->
+
+  <!-- <h1>Training Programs</h1>
+  <div  style="overflow-y: scroll; height:400px; width: fit-content;">
+
+    <div class="container" *ngFor="let trainingProgram of trainingPrograms" style="background-color: #E6E9E5; width: 1000px; height: fit-content;">
+      <div class="card">
+        <div class="card-header">
+          ***
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{trainingProgram.title}} ({{trainingProgram.date}}) </h4>
+          <p>--------------------------------------------------------------------------------------</p>
+          <p class="card-text">{{trainingProgram.description}}</p>
+          <p class="card-text">Available for
+            <span style="font-weight: 500; text-transform: uppercase;" *ngFor="let ele of trainingProgram.availability.values()">
+              {{ele.label}},
+            </span>
+          </p>
+          <p class="card-text">Located at <span style="font-weight: 500; text-transform: uppercase;">{{trainingProgram.location}}</span></p>
+        </div>
+      </div>
     </div>
-    <hr/>
-    <div style="width: 100%; display: flex; justify-content: center;">
-        <a [routerLink]="['']">Announcements</a>
-    </div>
-    <hr/>
-    <div style="width: 100%; display: flex; justify-content: center;">
-        <a [routerLink]="['']">Training Programs</a>
-    </div>
-    <hr/>
-    <div style="width: 100%; display: flex; justify-content: center;">
-        <a [routerLink]="['../login/empLogin']">Employees</a>
-    </div>
-    <hr/>
-    <div style="width: 100%; display: flex; justify-content: center;">
-        <a [routerLink]="['']">Attendance and leave</a>
-    </div>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <!-- <router-outlet></router-outlet> -->
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <br><br><br><br>
+  </div> -->
+</div>
