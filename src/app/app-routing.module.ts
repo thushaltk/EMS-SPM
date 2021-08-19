@@ -1,3 +1,4 @@
+import { AddTrainingProgramsComponent } from './components/training-programs/add-training-programs/add-training-programs.component';
 import { AdminLoginComponent } from './components/Login/admin-login/admin-login.component';
 import { EmpLoginComponent } from './components/Login/emp-login/emp-login.component';
 import { NgModule } from '@angular/core';
@@ -8,6 +9,9 @@ import { DashboardComponent } from './components/Admin/dashboard/dashboard.compo
 import { AddAnnouncementComponent } from './components/announcements/add-announcement/add-announcement.component';
 import { AnnouncementsComponent } from './components/announcements/announcements.component';
 import { AdminProfileComponent } from './components/Admin/admin-profile/admin-profile.component';
+import { TrainingProgramsComponent } from './components/training-programs/training-programs.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { EmpProfileComponent } from './components/employee/emp-profile/emp-profile.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
@@ -27,8 +31,22 @@ const appRoutes: Routes = [
         component: AnnouncementsComponent,
         children: [{ path: 'add', component: AddAnnouncementComponent }],
       },
+      {
+        path: 'training-programs',
+        component: TrainingProgramsComponent,
+        children: [{ path: 'add', component: AddTrainingProgramsComponent }],
+      },
     ],
   },
+  {
+    path: 'emp',
+    component: EmployeeComponent,
+    children: [
+      {path: 'empProfile', component: EmpProfileComponent}
+    ]
+
+
+  }
 ];
 
 @NgModule({

@@ -19,6 +19,11 @@ import { AnnouncementService } from 'services/announcements.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TrainingProgramsComponent } from './components/training-programs/training-programs.component';
 import { AddTrainingProgramsComponent } from './components/training-programs/add-training-programs/add-training-programs.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { EmpProfileComponent } from './components/employee/emp-profile/emp-profile.component';
+import { LeavesComponent } from './components/leaves/leaves.component';
+import { ApplyLeaveComponent } from './components/leaves/apply-leave/apply-leave.component';
+import { ViewLeaveComponent } from './components/leaves/view-leave/view-leave.component';
 
 
 @NgModule({
@@ -34,7 +39,12 @@ import { AddTrainingProgramsComponent } from './components/training-programs/add
     AddAnnouncementComponent,
     AdminProfileComponent,
     TrainingProgramsComponent,
-    AddTrainingProgramsComponent
+    AddTrainingProgramsComponent,
+    EmployeeComponent,
+    EmpProfileComponent,
+    LeavesComponent,
+    ApplyLeaveComponent,
+    ViewLeaveComponent
   ],
   imports: [
     AppRoutingModule,
