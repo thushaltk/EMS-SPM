@@ -9,3 +9,4 @@ router.post("/getLeaveByID/:id", leaveController.getLeaveByID);
 router.post("/updateLeave/:id", leaveController.updateLeave);
 router.post("/deleteLeave/:id", leaveController.deleteLeave);
 
+module.exports = router;

@@ -53,7 +53,7 @@ const getLeaveByID = async (req, res, next) => {
 const updateLeave = async (req, res, next) => {
     const leavID = req.params.id;
     const {empID, time, startDate,endDate, reason, status} = req.body;
-    const existingLeave;
+    let existingLeave;
     try{
         existingLeave = await Leave.findOne({_id: leavID});
     }catch(err){

@@ -60,7 +60,7 @@
           >
         </div>
         <div style="width: 100%; display: flex; justify-content: center">
-          <a style="font-size: 17px" [routerLink]="['']">View Announcements</a>
+          <a style="font-size: 17px" [routerLink]="['announcements/view']">View Announcements</a>
         </div>
       </mat-expansion-panel>
       <mat-expansion-panel
@@ -116,10 +116,10 @@
             justify-content: center;
           "
         >
-          <a style="font-size: 17px" [routerLink]="['']">Add New Employee</a>
+          <a style="font-size: 17px" [routerLink]="['employee/add']">Add New Employee</a>
         </div>
         <div style="width: 100%; display: flex; justify-content: center">
-          <a style="font-size: 17px" [routerLink]="['']">View Employees</a>
+          <a style="font-size: 17px" [routerLink]="['employee/view']">View Employees</a>
         </div>
       </mat-expansion-panel>
       <mat-expansion-panel
@@ -145,12 +145,20 @@
             justify-content: center;
           "
         >
-          <a style="font-size: 17px" [routerLink]="['']">Add Attendance</a>
+          <a style="font-size: 17px" [routerLink]="['attendance/add']">Add Attendance</a>
         </div>
-        <div style="width: 100%; display: flex; justify-content: center">
+        <div style="
+        padding-bottom: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: center;">
           <a style="font-size: 17px" [routerLink]="['']">View Attendance</a>
         </div>
-        <div style="width: 100%; display: flex; justify-content: center">
+        <div style="
+        padding-bottom: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: center;">
           <a style="font-size: 17px" [routerLink]="['']">View Leaves</a>
         </div>
       </mat-expansion-panel>

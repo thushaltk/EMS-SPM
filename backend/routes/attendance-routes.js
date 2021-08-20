@@ -1,5 +1,5 @@
 const express = require('express');
-const { check } = require('express-validator');
+//const { check } = require('express-validator');
 
 const router = express.Router();
 
@@ -11,3 +11,4 @@ router.get("/getAttendanceByID/:id", attendanceController.getAttendanceByID);
 router.put("/updateAttendance/:id", attendanceController.updateAttendance);
 router.put("/deleteAttendance/:id", attendanceController.deleteAttendance);
 
+module.exports = router;

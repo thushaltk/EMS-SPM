@@ -3,11 +3,11 @@ const TrainingProgram = require("../models/trainingProgram");
 //add training programs
 const addTrainingProgram = async (req, res, next) => {
   const createTrainingProgram = new TrainingProgram({
-    trainID: req.body.trainID,
     title: req.body.title,
     date: req.body.date,
     description: req.body.description,
     availability: req.body.availability,
+    venue: req.body.venue,
     email: req.body.email,
   });
   try {
@@ -48,7 +48,7 @@ const getTrainingProgramByID = async (req, res, next) => {
 const updateTrainingProgram = async (req, res, next) => {
   const trainingID = req.params.id;
   const {trainID, title, date,description, availability, email} = req.body;
-  const existingProgram;
+  let existingProgram;
   try{
     existingProgram = await TrainingProgram.findOne({_id: trainingID});
   }catch(err){

@@ -1,6 +1,9 @@
 import { OtherService } from 'services/other.service';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ToastrModule } from 'ngx-toastr';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/Header/header.component';
@@ -24,6 +27,15 @@ import { EmpProfileComponent } from './components/employee/emp-profile/emp-profi
 import { LeavesComponent } from './components/leaves/leaves.component';
 import { ApplyLeaveComponent } from './components/leaves/apply-leave/apply-leave.component';
 import { ViewLeaveComponent } from './components/leaves/view-leave/view-leave.component';
+import { AddEmployeeComponent } from './components/employee/add-employee/add-employee.component';
+import { AttendanceComponent } from './components/attendance/attendance.component';
+import { AddAttendanceComponent } from './components/attendance/add-attendance/add-attendance.component';
+import { TrainingProgramsService } from 'services/trainingprograms.service';
+import { EmployeeService } from 'services/employees.service';
+import { AttendanceService } from 'services/attendance.service';
+import { EmpSelectComponent } from './components/employee/emp-select/emp-select.component';
+import { EmpRegistryComponent } from './components/employee/emp-registry/emp-registry.component';
+import { ViewAnnouncementsComponent } from './components/announcements/view-announcements/view-announcements.component';
 
 
 @NgModule({
@@ -44,16 +56,26 @@ import { ViewLeaveComponent } from './components/leaves/view-leave/view-leave.co
     EmpProfileComponent,
     LeavesComponent,
     ApplyLeaveComponent,
-    ViewLeaveComponent
+    ViewLeaveComponent,
+    AddEmployeeComponent,
+    AttendanceComponent,
+    AddAttendanceComponent,
+    EmpSelectComponent,
+    EmpRegistryComponent,
+    ViewAnnouncementsComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    FormsModule,
+    Ng2SearchPipeModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    ToastrModule.forRoot()
   ],
-  providers: [OtherService, AnnouncementService],
+  providers: [OtherService, AnnouncementService, TrainingProgramsService, EmployeeService, AttendanceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

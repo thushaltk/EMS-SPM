@@ -5,8 +5,8 @@ const attendanceSchema = mongoose.Schema({
   empID: { type: String, required: true },
   date: { type: String, required: true },
   designation: { type: String, required: true },
-  arriveTime: { type: Date, required: true },
-  leaveTime: { type: Date, required: true },
+  arriveTime: { type: String, required: true },
+  leaveTime: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Attendance", attendanceSchema);

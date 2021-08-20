@@ -1,0 +1,22 @@
+div h1, div h2, div h4, div p, input, textarea {
+  color: black;
+}
+
+mat-spinner{
+  margin:auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+input{
+  border-color: #01579b;
+}

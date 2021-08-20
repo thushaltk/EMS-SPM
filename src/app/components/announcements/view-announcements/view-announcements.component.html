@@ -1,0 +1,28 @@
+<div style="padding: 40px; padding-right: 80px; width: 100%">
+  <h1>Announcements Management</h1>
+  <br>
+  <mat-spinner *ngIf = "isLoading"></mat-spinner>
+  <div  id="dataSet" style="overflow-y: scroll; height:400px; width: fit-content;" *ngIf = "!isLoading">
+    <div class="container pull-left" style="background-color: #fffdd0; width: 1000px; height: fit-content;" *ngFor="let announcement of announcements | filter:search">
+      <div class="card">
+        <div style="display: flex;" class="card-header">
+          <input style="width: 300px; margin-top: 10px; margin-left: 10px;" class="form-control" [(ngModel)]="search" type="text" placeholder="Search" aria-label="Search">
+          <button mat-raised-button color="primary" [routerLink]="['../report']" style="margin-left: 20px;">GENERATE REPORT</button>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{announcement.title}}</h5>
+          <p class="card-text">{{announcement.content}}</p>
+          <p class="card-text">{{announcement.date}} {{announcement.priority}} {{announcement.validity}}</p>
+          <div style="width: 100%; display: flex; justify-content: flex-end;">
+            <button mat-raised-button color="primary" [routerLink]="['../edit', announcement.id]" style="margin-right: 10px;">EDIT</button>
+            <button mat-raised-button color="warn"(click)="onDelete(announcement.id)">DELETE</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+  </div>
+  <br><br><br><br><br><br>
+
+</div>

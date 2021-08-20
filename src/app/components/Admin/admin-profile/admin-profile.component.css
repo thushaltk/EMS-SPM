@@ -11,7 +11,7 @@ h3{
     font-family: sans-serif;
     font-weight: 400;
   }
-  
+
   a{
       color: azure;
       text-decoration: none;
@@ -20,12 +20,12 @@ h3{
       cursor: pointer;
       font-family: sans-serif;
   }
-  
-  
+
+
   a:hover{
       color: #ee9e23;
   }
-  
+
   mat-sidenav-container {
     height: 100vh;
     color: azure;
@@ -33,23 +33,23 @@ h3{
     width: 100%;
     align-items: stretch;
   }
-  
+
   mat-sidenav {
     background-color: #3f51b5;
     height: 100%;
     width: 300px;
     left: 0;
   }
-  
+
   mat-expansion-panel{
     background-color: #3f51b5;
     padding: 20px
   }
-  
+
   mat-accordion{
     height: 100%;
   }
-  
+
   /* @media (max-width: 768px) {
     #sidebar {
       margin-left: -250px;
@@ -58,7 +58,7 @@ h3{
       margin-left: 0;
     }
   } */
-  
+
   p {
     font-family: "Poppins", sans-serif;
     font-size: 1.1em;
@@ -66,5 +66,4 @@ h3{
     line-height: 1.7em;
     color: #999;
   }
-  
-  
+

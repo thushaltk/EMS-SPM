@@ -1,12 +1,4 @@
 
-div h2{
-    color: black;
+div h2, div h4, div p, input, textarea {
+  color: black;
 }
-
-input.ng-invalid.ng-touched{
-    border: 1px solid red;
-  }
-  
-  textarea.ng-invalid.ng-touched{
-    border: 1px solid red;
-  }

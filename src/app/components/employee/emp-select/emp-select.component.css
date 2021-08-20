@@ -1,0 +1,31 @@
+div h1, div h2, div h4, div p, input, textarea {
+  color: black;
+}
+
+
+.buttonEmpSelect{
+  transition: 0.3s;
+  cursor: pointer;
+  color: #000;
+  width: 150px;
+  border-color: #000;
+  border-width: 5px;
+  border-radius: 12px;
+}
+
+.buttonEmpSelect:hover{
+  background-color: #01579b;
+  border-color: #01579b;
+  color: white;
+  font-weight: 700;
+}
+
+.scrollbarhide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbarhide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

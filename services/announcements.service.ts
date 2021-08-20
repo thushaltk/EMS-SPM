@@ -96,7 +96,7 @@ export class AnnouncementService {
     };
     this.http
       .post<{ message: string }>(
-        'http://localhost:5000/api/announcements',
+        'http://localhost:5000/api/announcements/add-announcement',
         announcementArray
       )
       .subscribe((responseData) => {

@@ -1,0 +1,54 @@
+<div class="scrollbarhide" style="padding: 40px; padding-left: 80px; padding-right: 80px; width: 100%">
+  <h1>Employee Details Management</h1>
+  <div>
+    <button mat-raised-button style="background-color: #ee9e23 ; color: aliceblue;" class="pull-left" [routerLink]="['../add']">ADD NEW EMPLOYEE</button>
+  <br><br><br>
+  <div class="card" style="border-color: #6d7fcc; border-radius: 10px 10px 10px 10px; box-shadow: 5px 5px 5px #888888;">
+    <div class="card-header" style="text-align:center">
+      <br><p class="h4"> Select the Employee Designation to Manage Employee Details</p>
+    </div>
+
+    <div class="card-body">
+      <br>
+      <div>
+        <div class="row justify-content-around" align="center">
+          <div class="col-4">
+            <button mat-raised-button color="primary" style="width: 140px; padding: 15px; padding-left: 20px; padding-right: 20px; font-size: 20px;" [routerLink]="['../Manager']">Managers</button>
+          </div>
+          <div class="col-4">
+            <button mat-raised-button color="primary" style="width: 140px;padding: 15px; padding-left: 20px; padding-right: 20px; font-size: 20px;" [routerLink]="['../Engineer']">Engineers</button>
+          </div>
+          <div class="col-4">
+            <button mat-raised-button color="primary" style="width: 140px;padding: 15px; padding-left: 20px; padding-right: 20px; font-size: 20px;" [routerLink]="['../IToperator']">IT Operators</button>
+          </div>
+        </div>
+        <br><br><br><br>
+        <div class="row justify-content-around" align="center">
+          <div class="col-4">
+            <button mat-raised-button color="primary" style="width: 140px;padding: 15px; padding-left: 20px; padding-right: 20px; font-size: 20px;" [routerLink]="['../Accountant']">Accountants</button>
+          </div>
+          <div class="col-4">
+            <button mat-raised-button color="primary" style="width: 140px;padding: 15px; padding-left: 20px; padding-right: 20px; font-size: 20px;" [routerLink]="['../Supervisor']">Supervisors</button>
+          </div>
+          <div class="col-4">
+            <button mat-raised-button color="primary" style="width: 140px;padding: 15px; padding-left: 20px; padding-right: 20px; font-size: 20px;" [routerLink]="['../Labor']">Labors</button>
+          </div>
+        </div>
+        <br><br><br><br>
+        <div class="row justify-content-around" align="center">
+          <div class="col-4">
+            <button mat-raised-button color="primary" style="width: 140px;padding: 15px; padding-left: 20px; padding-right: 20px; font-size: 20px;" [routerLink]="['../Driver']">Drivers</button>
+          </div>
+          <div class="col-4">
+            <button mat-raised-button color="primary" style="width: 180px;padding: 15px; padding-left: 20px; padding-right: 20px; font-size: 20px;" [routerLink]="['../Cleaningstaff']">Cleaning Staff</button>
+          </div>
+          <div class="col-4">
+            <button mat-raised-button color="primary" style="width: 180px;padding: 15px; padding-left: 20px; padding-right: 20px; font-size: 20px;" [routerLink]="['../Securitystaff']">Security Staff</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+  </div>
+  <br><br><br><br>
+</div>

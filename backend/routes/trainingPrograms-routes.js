@@ -23,3 +23,5 @@ router.post(
   "/deleteTrainingProgram/:id",
   trainingProgramsController.deleteTrainingProgram
 );
+
+module.exports = router;

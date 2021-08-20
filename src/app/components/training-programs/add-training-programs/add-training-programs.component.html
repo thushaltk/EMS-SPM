@@ -1,66 +1,48 @@
-<div style="padding: 40px; width: 100%">
-    <br />
-    <h2 class="text-center" style="padding-top: 10px">Create New Training Program</h2>
-    <br /><br />
-    <div class="container-fluid">
-      <form>
-        <mat-form-field
-          style="width: 100%"
-          class="example-full-width"
-          appearance="fill"
-        >
-          <mat-label>Program Title</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field
-          style="width: 100%"
-          class="example-full-width"
-          appearance="fill"
-        >
-          <mat-label>Date published</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <mat-form-field
-          style="width: 100%"
-          class="example-full-width"
-          appearance="fill"
-        >
-          <mat-label>Description</mat-label>
-          <textarea rows="7" matInput></textarea>
-        </mat-form-field>
-        <br />
-        <mat-form-field
-          style="width: 100%"
-          class="example-full-width"
-          appearance="fill"
-        >
-          <mat-label>Program Venue</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <br />
-        <br />
-        <mat-form-field style="width: 100%" appearance="fill">
-          <mat-label>Suitable For</mat-label>
-          <mat-select>
-            <mat-option> 1 week </mat-option>
-            <mat-option> 2 week </mat-option>
-            <mat-option> 3 week </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <br/>
-        <mat-form-field
-          style="width: 100%"
-          class="example-full-width"
-          appearance="fill"
-        >
-          <mat-label>Trainer Email</mat-label>
-          <input matInput />
-        </mat-form-field>
-        <br/>
-        <div class="text-center" style="width: 100%">
-          <button mat-raised-button color="warn">PUBLISH</button>
-        </div>
-      </form>
-    </div>
+<div style="padding: 40px; padding-left: 80px; padding-right: 80px; width: 100%">
+  <br />
+  <h2 class="text-center" style="padding-top: 10px">Create New Training Program</h2>
+  <br /><br />
+  <div class="container-fluid">
+    <form #tp="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Program Title</mat-label>
+        <input required id="title" name="title" #title="ngModel" [ngModel] matInput />
+      </mat-form-field>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Date Conducting</mat-label>
+        <input [min]="minDate" matInput required id="dateConducting" name="dateConducting" #dateConducting="ngModel"
+          [ngModel] [matDatepicker]="tppicker">
+        <mat-datepicker-toggle matSuffix [for]="tppicker"></mat-datepicker-toggle>
+        <mat-datepicker #tppicker></mat-datepicker>
+
+      </mat-form-field>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea required rows="7" matInput id="desc" name="desc" #desc="ngModel" [ngModel]></textarea>
+      </mat-form-field>
+      <br />
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Program Venue</mat-label>
+        <input required id="venue" name="venue" #venue="ngModel" [ngModel] matInput />
+      </mat-form-field>
+      <br />
+      <br />
+      <mat-form-field style="width: 100%" appearance="fill">
+        <mat-label>Suitable For</mat-label>
+        <mat-select multiple [formControl]="designations" required id="suitableFor" name="suitableFor" [ngModel]>
+          <mat-option *ngFor="let data of checkboxesDataList" [value]="data">{{data}}</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Trainer Email</mat-label>
+        <input type="email" id="email" name="email" #email="ngModel" [ngModel] matInput />
+      </mat-form-field>
+      <br />
+      <div class="text-center" style="width: 100%">
+        <button mat-raised-button color="warn">PUBLISH</button>
+      </div>
+    </form>
   </div>
-  
+</div>

@@ -1,6 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+const announcementsRoutes = require('./routes/announcement-routes');
+const attendanceRoutes = require('./routes/attendance-routes');
+const employeeRoutes = require('./routes/employee-routes');
+const leavesRoutes = require('./routes/leave-routes');
+const trainingProgramsRoutes = require('./routes/trainingPrograms-routes');
+
+
 //Initialize express framework
 const app = express();
 
@@ -14,12 +21,18 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
   res.setHeader("Access-Control-Expose-Headers", "Content-Range");
   res.setHeader("Content-Range", "bytes: 0-10/*");
 
   next();
 });
+
+app.use('/api/announcements', announcementsRoutes);
+app.use('/api/attendance', attendanceRoutes);
+app.use('/api/employees', employeeRoutes);
+app.use('/api/leaves', leavesRoutes);
+app.use('/api/training-programs', trainingProgramsRoutes);
 
 //404 route
 app.use((req, res, next) => {
@@ -36,6 +49,8 @@ app.use((error, req, res, next) => {
     .status(error.code || 500)
     .json({ message: error.message || "An unknown error occured" });
 });
+
+
 
 //MongoDB connection
 mongoose

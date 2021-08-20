@@ -9,7 +9,7 @@ export class Employees{
     public address: string,
     public cnumber: string,
     public email: string,
-    public empDes: string,
+    public designation: string,
     public doj: string,
-    public comment: string){}
+    public reason: string){}
 }

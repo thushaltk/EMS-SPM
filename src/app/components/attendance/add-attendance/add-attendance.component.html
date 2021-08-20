@@ -1,0 +1,53 @@
+<div style="padding: 40px; padding-left: 80px; padding-right: 80px; width: 100%">
+  <br />
+  <h2 class="text-center" style="padding-top: 10px">ADD NEW ATTENDANCE</h2>
+  <br /><br />
+  <div class="container-fluid">
+    <form #attn="ngForm" (ngSubmit)="onSubmit()">
+      <div style="display: flex;">
+        <mat-form-field style="width: 85%" class="example-full-width" appearance="fill">
+          <mat-label>NIC</mat-label>
+          <input required id="nic" name="nic" #nic="ngModel" [ngModel] matInput />
+        </mat-form-field>
+        <div class="text-center" style="width: 15%; padding: 10px">
+          <button (click)="onGetDetails(nic.value)" mat-raised-button color="primary">Get Details</button>
+        </div>
+      </div>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Employee Name</mat-label>
+        <input required id="empName" name="empName" #empName="ngModel" [ngModel] matInput />
+      </mat-form-field>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Employee ID</mat-label>
+        <input required id="empID" name="empID" #empID="ngModel" [ngModel] matInput />
+      </mat-form-field>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Today's Date</mat-label>
+        <input disabled required [value]="todaysDate" matInput [matDatepicker]="attnpicker">
+        <mat-datepicker-toggle disabled matSuffix [for]="attnpicker"></mat-datepicker-toggle>
+        <mat-datepicker disabled="false" #attnpicker></mat-datepicker>
+
+      </mat-form-field>
+      <br />
+      <mat-form-field style="width: 100%" appearance="fill">
+        <mat-label>Designation</mat-label>
+        <mat-select required id="designation" name="designation" [ngModel]>
+          <mat-option *ngFor="let data of checkboxesDataList" [value]="data">{{data}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Arrival Time</mat-label>
+        <input required id="arriveTime" name="arriveTime" #arriveTime="ngModel" [ngModel] type="time" matInput />
+      </mat-form-field>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Leave Time</mat-label>
+        <input required id="leaveTime" name="leaveTime" #leaveTime="ngModel" [ngModel] type="time" matInput />
+      </mat-form-field>
+      <br/><br/>
+      <div class="text-center" style="width: 100%;">
+        <button style="width: 8%;font-size: larger;padding: 5px;margin-right: 20px;" mat-raised-button color="primary">ADD</button>
+        <button style="width: 8%;font-size: larger;padding: 5px;" mat-raised-button color="warn">CLEAR</button>
+      </div>
+    </form>
+  </div>
+</div>

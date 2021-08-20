@@ -1,0 +1,65 @@
+<div class="content" style="padding: 40px; padding-right: 80px; width: 100%">
+  <div style= "background-size: auto;">
+
+    <div>
+      <p class="h1" >{{ this.title}} Registry</p><br>
+    </div>
+
+    <div  style="width: 100%;overflow-y: scroll;">
+      <div class ="card text-center"  style="border-color: #6d7fcc; border-radius: 10px 10px 10px 10px; width: fit-content;">
+        <div class="card-header" style="display: flex;">
+          <div class="md-form active-pink-2 mb-3 pull-left" style="width:300px; margin-right: 10px;">
+            <!-- SEARCH -->
+            <input class="form-control" [(ngModel)]="term" type="text" placeholder="Search Employee" aria-label="Search" >
+          </div>
+          <div class="pull-left">
+            <button [routerLink]="['../report', designation]" class="btn btn-success">GENERATE REPORT</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">NIC</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Address</th>
+                <th scope="col">Contact Number</th>
+                <th scope="col">Email</th>
+                <th scope="col">Date of Joining</th>
+                <th scope="col">Special Medical illness</th>
+                <th scope="col" colspan="2">Action</th>
+
+              </tr>
+            </thead>
+            <mat-spinner *ngIf = "isLoading"></mat-spinner>
+            <tbody *ngIf = "!isLoading">
+
+              <!-- Filters value according to the search result-->
+              <tr *ngFor="let employee of employees | filter:term">
+                <td>{{ employee.empID}}</td>
+                <td>{{ employee.fullName}}</td>
+                <td>{{ employee.nic}}</td>
+                <td>{{ employee.dob}}</td>
+                <td>{{ employee.gender}}</td>
+                <td>{{ employee.address}}</td>
+                <td>{{ employee.cnumber}}</td>
+                <td>{{ employee.email}}</td>
+                <td>{{ employee.doj}}</td>
+                <td>{{ employee.reason}}</td>
+                <td colspan="2">
+                  <a [routerLink]="['../edit', employee.id]" class="btn btn-warning pull-right" style="width:75px; margin-bottom: 8px;">EDIT</a>
+                  <a class="btn btn-danger pull-right" (click)="onDelete(employee.id)">DELETE</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <br><br><br><br><br>
+</div>

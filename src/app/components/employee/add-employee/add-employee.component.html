@@ -1,0 +1,80 @@
+<div style="padding: 40px; width: 100%">
+  <br />
+  <h2 style="padding-top: 10px" *ngIf="mode == 'create'">ADD NEW EMPLOYEE</h2>
+  <h2 style="padding-top: 10px" *ngIf="mode == 'edit'">UPDATE EMPLOYEE</h2>
+  <br /><br />
+  <div class="container-fluid">
+    <h4 class="text-center" style="padding-top: 10px">Personal Information</h4>
+    <br />
+    <form #emp="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Employee Name</mat-label>
+        <input required id="fullName" name="fullName" #fullName="ngModel" [ngModel]="demoBtnClicked ? employees.fullName : empDetails?.fullName" matInput />
+      </mat-form-field>
+      <div style="width: 100%; display: flex; justify-content: space-between;">
+        <mat-form-field style="width: 33%" class="example-full-width" appearance="fill">
+          <mat-label>Date of Birth</mat-label>
+          <input required id="dob" name="dob" #dob="ngModel" [ngModel]="demoBtnClicked ? employees.dob : empDetails?.dob" matInput [matDatepicker]="dojpicker">
+          <mat-datepicker-toggle matSuffix [for]="dojpicker"></mat-datepicker-toggle>
+          <mat-datepicker #dojpicker></mat-datepicker>
+
+        </mat-form-field>
+        <mat-form-field style="width: 33%" class="example-full-width" appearance="fill">
+          <mat-label>NIC</mat-label>
+          <input required (change)="nicValidate(nic.value)" id="nic" name="nic" #nic="ngModel" [ngModel]="demoBtnClicked ? employees.nic : empDetails?.nic" matInput />
+          <mat-error *ngIf = "nicInvalid">
+            Please enter a valid NIC
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field style="width: 33%" appearance="fill">
+          <mat-label>Gender</mat-label>
+          <mat-select required id="gender" name="gender" #gender="ngModel" [ngModel]>
+            <mat-option value="Male"> Male </mat-option>
+            <mat-option value="Female"> Female </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Address</mat-label>
+        <input required id="address" name="address" #address="ngModel" [ngModel]="demoBtnClicked ? employees.address : empDetails?.address" matInput />
+      </mat-form-field>
+      <br />
+      <div style="width: 100%; display: flex; justify-content: space-between;">
+        <mat-form-field style="width: 45%" class="example-full-width" appearance="fill">
+          <mat-label>Contact Number</mat-label>
+          <input required id="cnumber"  pattern="^\d{10}$" name="cnumber" #cnumber="ngModel" [ngModel]="demoBtnClicked ? employees.cnumber : empDetails?.cnumber" matInput />
+
+        </mat-form-field>
+        <mat-form-field style="width: 50%" class="example-full-width" appearance="fill">
+          <mat-label>Email Address</mat-label>
+          <input type="email" required id="email" name="email" #email="ngModel" [ngModel]="demoBtnClicked ? employees.email : empDetails?.email" matInput />
+
+        </mat-form-field>
+      </div>
+      <h4 class="text-center" style="padding-top: 10px">Job Related Information</h4>
+      <br />
+      <mat-form-field style="width: 100%" appearance="fill">
+        <mat-label>Employee Designation</mat-label>
+        <mat-select required id="designation" name="designation" [ngModel]="demoBtnClicked ? employees.designation : empDetails?.designation">
+          <mat-option *ngFor="let data of checkboxesDataList" [value]="data">{{data}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width: 33%" class="example-full-width" appearance="fill">
+        <mat-label>Date of Joining</mat-label>
+        <input required id="doj" name="doj" #doj="ngModel" [ngModel]="demoBtnClicked ? employees.doj : empDetails?.doj" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+      </mat-form-field>
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+        <mat-label>Special Medical Reason</mat-label>
+        <textarea required id="reason" name="reason" #reason="ngModel" [ngModel]="demoBtnClicked ? employees.reason : empDetails?.reason" rows="7" matInput></textarea>
+      </mat-form-field>
+      <br />
+      <div class="text-center" style="width: 100%">
+        <button mat-raised-button color="warn">PUBLISH</button>
+      </div>
+    </form>
+  </div>
+</div>

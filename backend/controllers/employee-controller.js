@@ -13,9 +13,10 @@ const addEmployee = async (req, res, next) => {
     address: req.body.address,
     cnumber: req.body.cnumber,
     email: req.body.email,
-    empDes: req.body.empDes,
+    empDes: req.body.designation,
     doj: req.body.doj,
-    comment: req.body.comment,
+    reason: req.body.reason,
+    password: ''
   });
   try {
     await createEmployee.save();
@@ -29,9 +30,10 @@ const addEmployee = async (req, res, next) => {
 
 //Reteive Employees
 const getEmployees = async (req, res, next) => {
+  console.log('helooooo1')
   let employees;
   try {
-    employees = await employees.find();
+    employees = await Employee.find();
   } catch (err) {
     throw new HttpError("Fetching employees failed, try again later", 500);
   }
@@ -40,6 +42,7 @@ const getEmployees = async (req, res, next) => {
 
 //Reteive Employees by ID
 const getEmployeeByID = async (req, res, next) => {
+  console.log('helooooo2')
   const empID = req.params.id;
   let employee;
   try {
@@ -55,8 +58,8 @@ const getEmployeeByID = async (req, res, next) => {
 //Update Employees
 const updateEmployee = async (req, res, next) => {
   const empID = req.params.id;
-  const {fullName, dob, nic, empID, gender, address, cnumber, email, empDes, doj, comment} = req.body;
-  const existingEmployee;
+  const {fullName, dob, nic, gender, address, cnumber, email, designation, doj, reason} = req.body;
+  let existingEmployee;
   try{
       existingEmployee = await Employee.findOne({_id: empID});
   }catch(err){
@@ -75,9 +78,9 @@ const updateEmployee = async (req, res, next) => {
       existingEmployee.address = address;
       existingEmployee.cnumber = cnumber;
       existingEmployee.email = email;
-      existingEmployee.empDes = empDes;
+      existingEmployee.empDes = designation;
       existingEmployee.doj = doj;
-      existingEmployee.comment = comment;
+      existingEmployee.reason = reason;
 
       try{
           await existingEmployee.save();
@@ -92,13 +95,12 @@ const updateEmployee = async (req, res, next) => {
 
 //Reteive Employees by designation
 const getEmployeeByDesignation = async (req, res, next) => {
-  const {empDesignation} = req.body;
-  try{
-    await Employee.find({designation: empDesignation});
-  }catch(err){
-    const error = new HttpError("Cannot find requested data...", 500);
-    return error;
-  }
+  Employee.find({ empDes: req.params.designation }).then((documents) => {
+    res.status(200).json({
+      message: "Employees fetched successfully by designation",
+      employees: documents,
+    });
+  });
 };
 
 

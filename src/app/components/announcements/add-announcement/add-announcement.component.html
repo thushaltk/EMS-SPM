@@ -1,50 +1,40 @@
-<div style="padding: 40px; width: 100%">
+<div style="padding: 40px; padding-left: 80px; padding-right: 80px;width: 100%">
   <br />
   <h2 class="text-center" style="padding-top: 10px">Create New Announcement</h2>
   <br /><br />
   <div class="container-fluid">
-    <form>
-      <mat-form-field
-        style="width: 100%"
-        class="example-full-width"
-        appearance="fill"
-      >
+    <form #ann="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Announcement Title</mat-label>
-        <input matInput />
+        <input matInput required id="title" name="title" #title="ngModel" [ngModel]="demoBtnClicked ? announcements.title : announcementsDetails?.title" />
       </mat-form-field>
-      <mat-form-field
-        style="width: 100%"
-        class="example-full-width"
-        appearance="fill"
-      >
+
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Date published</mat-label>
-        <input matInput />
+        <input [min]="minDate" matInput required id="datePublished" name="datePublished" #datePublished="ngModel" [ngModel]="announcementsDetails?.date"
+          [matDatepicker]="annpicker">
+        <mat-datepicker-toggle matSuffix [for]="annpicker"></mat-datepicker-toggle>
+        <mat-datepicker #annpicker></mat-datepicker>
+
       </mat-form-field>
-      <mat-form-field
-        style="width: 100%"
-        class="example-full-width"
-        appearance="fill"
-      >
+      <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Content</mat-label>
-        <textarea rows="7" matInput></textarea>
+        <textarea rows="7" matInput required id="content" name="content" #content="ngModel"[ngModel]="demoBtnClicked ? announcements.content : announcementsDetails?.content"></textarea>
       </mat-form-field>
-      <br />
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button style="color: black" value="1">HIGH</mat-radio-button>
-        <br />
-        <br />
-        <mat-radio-button style="color: black" value="2"
-          >NORMAL</mat-radio-button
-        >
-      </mat-radio-group>
-      <br />
       <br />
       <mat-form-field style="width: 100%" appearance="fill">
+        <mat-label>Priority</mat-label>
+        <mat-select required id="priority" name="priority" [ngModel]="demoBtnClicked ? announcements.priority : announcementsDetails?.priority">
+          <mat-option value="High"> High </mat-option>
+          <mat-option value="Normal"> Normal </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width: 100%" appearance="fill">
         <mat-label>Validity</mat-label>
-        <mat-select>
-          <mat-option> 1 week </mat-option>
-          <mat-option> 2 week </mat-option>
-          <mat-option> 3 week </mat-option>
+        <mat-select required id="validity" name="validity" [ngModel]="demoBtnClicked ? announcements.validity : announcementsDetails?.validity">
+          <mat-option value="1 week"> 1 week </mat-option>
+          <mat-option value="2 week"> 2 week </mat-option>
+          <mat-option value="3 week"> 3 week </mat-option>
         </mat-select>
       </mat-form-field>
       <div class="text-center" style="width: 100%">

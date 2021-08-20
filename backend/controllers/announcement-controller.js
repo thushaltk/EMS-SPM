@@ -1,4 +1,4 @@
-const Announcement = require("../../models/announcements");
+const Announcement = require("../models/announcement");
 const HttpError = require("../models/http-error");
 
 const addAnnouncement = async (req, res, next) => {
@@ -7,6 +7,7 @@ const addAnnouncement = async (req, res, next) => {
     date: req.body.date,
     content: req.body.content,
     priority: req.body.priority,
+    validity: req.body.validity
   });
   try {
     await createAnnouncement.save();
@@ -24,7 +25,7 @@ const getAnnouncements = async (req, res, next) => {
   } catch (err) {
     throw new HttpError("Fetching announcements failed, try again later", 500);
   }
-  res.send(announcements);
+  res.send({ message: "Data retreived successfully", announcements: announcements });
 };
 
 const deleteAnnouncement = async (req, res, next) => {
@@ -52,33 +53,33 @@ const getAnnouncementByID = async (req, res, next) => {
 };
 
 const updateAnnouncement = async (req, res, next) => {
-    const annID = req.params.id;
-    const {title, date, content, priority, validity} = req.body;
-    const existingAnnouncement;
-    try{
-        existingAnnouncement = await Announcement.findOne({_id: annID});
-    }catch(err){
-        const error = new HttpError("Error occured", 500);
-        return error;
-    }
-    if(!announcement){
-        const error =  new HttpError("Data not found", 401);
-        return error;
-    }else{
-        existingAnnouncement.title = title;
-        existingAnnouncement.date = date;
-        existingAnnouncement.content = content;
-        existingAnnouncement.priority = priority;
-        existingAnnouncement.validity = validity;
+  const annID = req.params.id;
+  const { title, date, content, priority, validity } = req.body;
+  let existingAnnouncement;
+  try {
+    existingAnnouncement = await Announcement.findOne({ _id: annID });
+  } catch (err) {
+    const error = new HttpError("Error occured", 500);
+    return error;
+  }
+  if (!announcement) {
+    const error = new HttpError("Data not found", 401);
+    return error;
+  } else {
+    existingAnnouncement.title = title;
+    existingAnnouncement.date = date;
+    existingAnnouncement.content = content;
+    existingAnnouncement.priority = priority;
+    existingAnnouncement.validity = validity;
 
-        try{
-            await existingAnnouncement.save();
-        }catch(err){
-            const error = new HttpError('Failed to update data', 500);
-            return error;
-        }
-        res.send({message: 'Updated successfully', data: existingAnnouncement});
+    try {
+      await existingAnnouncement.save();
+    } catch (err) {
+      const error = new HttpError('Failed to update data', 500);
+      return error;
     }
+    res.send({ message: 'Updated successfully', data: existingAnnouncement });
+  }
 }
 
 module.exports = {
