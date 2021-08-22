@@ -4,19 +4,6 @@ const HttpError = require("../models/http-error");
 
 //Add attendance
 const addNewAttendance = async (req, res, next) => {
-    // const at = new Date(req.body.date); //creating a date object for arrive time
-    // const lt = new Date(req.body.date); //creating a date object for leave time
-
-    // let arrive = req.body.arriveTime;
-    // let ar1 = arrive.split(":"); // spliting time into hours and minutes
-
-    // at.setHours(parseInt(ar1[0]) + 5, parseInt(ar1[1]) + 30, 0); // add time in to date object
-
-    // let leave = req.body.leaveTime;
-    // let ar2 = leave.split(":"); // spliting time into hours and minutes
-
-    // lt.setHours(parseInt(ar2[0]) + 5, parseInt(ar2[1]) + 30, 0); // add time in to date object
-
     const  createattendance = new Attendance({
       fullName: req.body.fullName,
       nic: req.body.nic,
@@ -44,9 +31,10 @@ const getAttendances = async (req, res, next) => {
     try {
         attendances = await Attendance.find();
     } catch (err) {
-      throw new HttpError("Fetching attendances failed, try again later", 500);
+      const error =  HttpError("Fetching attendances failed, try again later", 500);
+      return next(error);
     }
-    res.send(attendances);
+    res.send({ attendances:  attendances });
   };
 
 
@@ -68,18 +56,6 @@ const getAttendanceByID = async (req, res, next) => {
 //Update Attendance
 const updateAttendance = async (req, res, next) => {
     const attID = req.params.id;
-    const at = new Date(req.body.date); //creating a date object for arrive time
-    const lt = new Date(req.body.date); //creating a date object for leave time
-
-    let arrive = req.body.arriveTime;
-    let ar1 = arrive.split(":"); // spliting time into hours and minutes
-
-    at.setHours(parseInt(ar1[0]) + 5, parseInt(ar1[1]) + 30, 0); // add time in to date object
-
-    let leave = req.body.leaveTime;
-    let ar2 = leave.split(":"); // spliting time into hours and minutes
-
-    lt.setHours(parseInt(ar2[0]) + 5, parseInt(ar2[1]) + 30, 0); // add time in to date object
 
     let existingAttendance;
     try{
@@ -97,8 +73,8 @@ const updateAttendance = async (req, res, next) => {
         existingAttendance.empID = req.body.empID;
         existingAttendance.date = req.body.date;
         existingAttendance.designation = req.body.designation;
-        existingAttendance.arriveTime = at;
-        existingAttendance.leaveTime = lt;
+        existingAttendance.arriveTime = req.body.arriveTime;
+        existingAttendance.leaveTime = req.body.leaveTime;
         try{
             await existingAttendance.save();
         }catch(err){

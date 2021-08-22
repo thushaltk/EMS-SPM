@@ -1,5 +1,5 @@
-div h1{
-  color:black;
+div, div h2, div h1, div h4, div p, input, textarea {
+  color: black;
 }
 .red{
   color: red;

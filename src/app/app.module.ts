@@ -36,6 +36,8 @@ import { AttendanceService } from 'services/attendance.service';
 import { EmpSelectComponent } from './components/employee/emp-select/emp-select.component';
 import { EmpRegistryComponent } from './components/employee/emp-registry/emp-registry.component';
 import { ViewAnnouncementsComponent } from './components/announcements/view-announcements/view-announcements.component';
+import { ViewAttendanceComponent } from './components/attendance/view-attendance/view-attendance.component';
+//import { ViewTrainingProgramsComponent } from './components/training-programs/view-training-programs/view-training-programs.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { ViewAnnouncementsComponent } from './components/announcements/view-anno
     AddAttendanceComponent,
     EmpSelectComponent,
     EmpRegistryComponent,
-    ViewAnnouncementsComponent
+    ViewAnnouncementsComponent,
+    ViewAttendanceComponent,
+    //ViewTrainingProgramsComponent
   ],
   imports: [
     AppRoutingModule,
