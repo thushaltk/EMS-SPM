@@ -5,59 +5,81 @@
       <p class="h1" >{{ this.title}} Registry</p><br>
     </div>
 
-    <div  style="width: 100%;overflow-y: scroll;">
-      <div class ="card text-center"  style="border-color: #6d7fcc; border-radius: 10px 10px 10px 10px; width: fit-content;">
-        <div class="card-header" style="display: flex;">
-          <div class="md-form active-pink-2 mb-3 pull-left" style="width:300px; margin-right: 10px;">
-            <!-- SEARCH -->
-            <input class="form-control" [(ngModel)]="term" type="text" placeholder="Search Employee" aria-label="Search" >
-          </div>
-          <div class="pull-left">
-            <button [routerLink]="['../report', designation]" class="btn btn-success">GENERATE REPORT</button>
-          </div>
-        </div>
-        <div class="card-body">
-          <table class="table table-bordered">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Full Name</th>
-                <th scope="col">NIC</th>
-                <th scope="col">Date of Birth</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Address</th>
-                <th scope="col">Contact Number</th>
-                <th scope="col">Email</th>
-                <th scope="col">Date of Joining</th>
-                <th scope="col">Special Medical illness</th>
-                <th scope="col" colspan="2">Action</th>
+    <div style="display: flex;">
+      <mat-form-field style="width: 30%; margin-right: 20px;" class="example-full-width" appearance="fill">
+        <mat-label>Search</mat-label>
+        <input required id="fullName" name="fullName" #fullName="ngModel" [(ngModel)]="search" matInput />
+      </mat-form-field>
+      <button style="height: 90%; margin-top: 15px;" mat-raised-button color="primary" [routerLink]="['../report']" >GENERATE REPORT</button>
+    </div>
+    <div style="width: 100%;">
+      <table style="width: 100%;" mat-table [dataSource]="employees | filter: search" class="mat-elevation-z8" >
+        <ng-container matColumnDef="EMPID">
+          <th  mat-header-cell  *matHeaderCellDef>EMPID</th>
+          <td mat-cell *matCellDef="let element" style="padding: 10px;"> {{element.empID}} </td>
+        </ng-container>
 
-              </tr>
-            </thead>
-            <mat-spinner *ngIf = "isLoading"></mat-spinner>
-            <tbody *ngIf = "!isLoading">
+        <ng-container matColumnDef="Full Name">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Full Name </th>
+          <td mat-cell *matCellDef="let element" style="padding: 10px;"> {{element.fullName}} </td>
+        </ng-container>
 
-              <!-- Filters value according to the search result-->
-              <tr *ngFor="let employee of employees | filter:term">
-                <td>{{ employee.empID}}</td>
-                <td>{{ employee.fullName}}</td>
-                <td>{{ employee.nic}}</td>
-                <td>{{ employee.dob}}</td>
-                <td>{{ employee.gender}}</td>
-                <td>{{ employee.address}}</td>
-                <td>{{ employee.cnumber}}</td>
-                <td>{{ employee.email}}</td>
-                <td>{{ employee.doj}}</td>
-                <td>{{ employee.reason}}</td>
-                <td colspan="2">
-                  <a [routerLink]="['../edit', employee.id]" class="btn btn-warning pull-right" style="width:75px; margin-bottom: 8px;">EDIT</a>
-                  <a class="btn btn-danger pull-right" (click)="onDelete(employee.id)">DELETE</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+
+        <ng-container matColumnDef="NIC">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> NIC </th>
+          <td mat-cell *matCellDef="let element" style="padding: 10px;" > {{element.nic}} </td>
+        </ng-container>
+
+
+        <ng-container  matColumnDef="DOB">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> DOB </th>
+          <td mat-cell *matCellDef="let element" style="padding: 10px;" > {{element.dob}} </td>
+        </ng-container>
+
+        <ng-container  matColumnDef="Gender">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Gender </th>
+          <td mat-cell *matCellDef="let element" style="padding: 10px;"> {{element.gender}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Address">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Address </th>
+          <td mat-cell *matCellDef="let element" style="padding: 10px;"> {{element.address}} </td>
+        </ng-container>
+
+        <ng-container  matColumnDef="Contact No.">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Contact No. </th>
+          <td mat-cell *matCellDef="let element" style="padding: 10px;"> {{element.cnumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Email">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let element" style="padding: 10px;"> {{element.email}} </td>
+        </ng-container>
+
+        <ng-container  matColumnDef="DOJ">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> DOJ </th>
+          <td mat-cell *matCellDef="let element" style="padding: 10px;"> {{element.doj}} </td>
+        </ng-container>
+
+        <ng-container  matColumnDef="Medical">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Medical </th>
+          <td mat-cell *matCellDef="let element" style="padding: 10px;"> {{element.reason}} </td>
+        </ng-container>
+
+        <ng-container  matColumnDef="Action">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element" style="padding: 10px;">
+            <button mat-raised-button class="yellow" style="width: 90%; margin-bottom: 10px; margin-top: 10px;" [routerLink]="['../edit', element.id]">EDIT</button>
+            <br/>
+            <button mat-raised-button color="warn" style="width: 90%; margin-bottom: 10px; font-size: x-small;" [routerLink]="['../', element.id]">DELETE</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+          <button mat-raised-button color="warn">DELETE</button>
+        </tr>
+      </table>
     </div>
 
   </div>
