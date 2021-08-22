@@ -28,7 +28,7 @@
         </mat-form-field>
         <mat-form-field style="width: 33%" appearance="fill">
           <mat-label>Gender</mat-label>
-          <mat-select required id="gender" name="gender" #gender="ngModel" [ngModel]>
+          <mat-select required id="gender" name="gender" #gender="ngModel" [ngModel]="demoBtnClicked ? employees.gender: empDetails?.gender">
             <mat-option value="Male"> Male </mat-option>
             <mat-option value="Female"> Female </mat-option>
           </mat-select>
@@ -68,7 +68,7 @@
 
       </mat-form-field>
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
-        <mat-label>Special Medical Reason</mat-label>
+        <mat-label>Special Medical Concerns</mat-label>
         <textarea required id="reason" name="reason" #reason="ngModel" [ngModel]="demoBtnClicked ? employees.reason : empDetails?.reason" rows="7" matInput></textarea>
       </mat-form-field>
       <br />

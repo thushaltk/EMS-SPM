@@ -66,7 +66,7 @@ import { ViewTrainingProgramsComponent } from './components/training-programs/vi
     ViewAnnouncementsComponent,
     ViewAttendanceComponent,
     ViewTrainingProgramsComponent,
-    //ViewTrainingProgramsComponent
+    ViewTrainingProgramsComponent
   ],
   imports: [
     AppRoutingModule,

@@ -37,36 +37,35 @@ const getEmployees = async (req, res, next) => {
   } catch (err) {
     throw new HttpError("Fetching employees failed, try again later", 500);
   }
-  res.send(employees);
+  res.send({employees: employees});
 };
 
 //Reteive Employees by ID
 const getEmployeeByID = async (req, res, next) => {
-  console.log('helooooo2')
   const empID = req.params.id;
   let employee;
   try {
     employee = await Employee.find({ _id: empID });
   } catch (err) {
-    const error = new HttpError("Cannot finr the requested data..", 500);
+    const error = new HttpError("Cannot find the requested data..", 500);
     return error;
   }
-  res.send({ message: "Data retreived successfully", data: employee });
+  res.send({ data: employee });
 };
 
 
 //Update Employees
 const updateEmployee = async (req, res, next) => {
-  const empID = req.params.id;
-  const {fullName, dob, nic, gender, address, cnumber, email, designation, doj, reason} = req.body;
+  const id = req.params.id;
+  const {fullName, dob, nic, gender, address, cnumber, email, designation, doj, empID, reason} = req.body;
   let existingEmployee;
   try{
-      existingEmployee = await Employee.findOne({_id: empID});
+      existingEmployee = await Employee.findOne({_id: id});
   }catch(err){
       const error = new HttpError("Error occured", 500);
       return error;
   }
-  if(!Employee){
+  if(!existingEmployee){
       const error =  new HttpError("Data not found", 401);
       return error;
   }else{
@@ -118,17 +117,20 @@ const deleteEmployee = async (req, res, next) => {
 
 //Update password
 const updatePassword = async (req, res, next) => {
-  const {email, password} = req.body;
+  const {nic, pwd, confpwd} = req.body;
   let employee;
   try{
-    employee = await Employee.findOne({email: email});
+    employee = await Employee.findOne({nic: nic});
   }catch(err){
     return err;
   }
+
   if(!employee){
-    return new HttpError('User does not exist', 401);
+    console.log('No user');
+    res.send({message: 'No user found'});
+    return new HttpError('No user found', 401);
   }else{
-    employee.password = password;
+    employee.password = pwd;
     try{
       await employee.save();
     }
@@ -139,6 +141,21 @@ const updatePassword = async (req, res, next) => {
   res.send({message: 'Password update successfully', data: employee});
 }
 
+const checkPassword = async (req, res, next) => {
+  const {nic, pwd} = req.body;
+  let employee;
+  try{
+    employee = await Employee.findOne({nic: nic, password: pwd});
+  }catch(err){
+    return new HttpError("Failed to validate login", 401);
+  }
+  if(!employee){
+    res.send({message: 'No user found'});
+  }else{
+    res.send({message: 'user found', data: employee});
+  }
+}
+
 module.exports = {
   getEmployeeByDesignation,
   addEmployee,
@@ -146,5 +163,6 @@ module.exports = {
   getEmployeeByID,
   deleteEmployee,
   updateEmployee,
-  updatePassword
+  updatePassword,
+  checkPassword
 };

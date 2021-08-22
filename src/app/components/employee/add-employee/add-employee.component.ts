@@ -53,6 +53,7 @@ export class AddEmployeeComponent implements OnInit {
         for(let emp of this.employeeDetails){
           if(emp.id === this.employeeID){
             this.empDetails = emp;
+            console.log(this.employeeDetails);
             this.empID = emp.empID;
           }else{
             continue;
