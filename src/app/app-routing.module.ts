@@ -40,15 +40,16 @@ const appRoutes: Routes = [
         children: [
           { path: 'add', component: AddAnnouncementComponent },
           { path: 'view', component: ViewAnnouncementsComponent },
-          { path: 'edit/:annID', component: AddAnnouncementComponent }],
+          { path: 'edit/:annID', component: AddAnnouncementComponent },
+        ],
       },
       {
         path: 'training-programs',
         component: TrainingProgramsComponent,
         children: [
           { path: 'add', component: AddTrainingProgramsComponent },
-         // { path: 'view', component: ViewTrainingProgramsComponent },
-          { path: 'edit/:tpID', component: AddTrainingProgramsComponent }
+          { path: 'view', component: ViewTrainingProgramsComponent },
+          { path: 'edit/:tpID', component: AddTrainingProgramsComponent },
         ],
       },
       { path: 'employee/add', component: AddEmployeeComponent },
@@ -61,23 +62,20 @@ const appRoutes: Routes = [
         children: [
           { path: 'add', component: AddAttendanceComponent },
           { path: 'view', component: ViewAttendanceComponent },
-          { path: 'edit/:id', component: AddAttendanceComponent }],
+          { path: 'edit/:id', component: AddAttendanceComponent },
+        ],
       },
     ],
   },
   {
     path: 'emp',
     component: EmployeeComponent,
-    children: [
-      { path: 'empProfile/:id', component: EmpProfileComponent }
-    ]
-
-
-  }
+    children: [{ path: 'empProfile/:id', component: EmpProfileComponent }],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
