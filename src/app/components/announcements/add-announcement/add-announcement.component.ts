@@ -45,9 +45,9 @@ export class AddAnnouncementComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('annID')) {
         this.mode = 'edit';
-        this.announcementID = JSON.parse(paramMap.get('annID') || '');
-        // this.announcementsDetails =
-        //   this.announcementService.getAnnouncementByID(this.announcementID);
+        this.announcementID = paramMap.get('annID');
+        this.announcementsDetails =
+          this.announcementService.getAnnouncementByID(this.announcementID);
       } else {
         this.mode = 'create';
         this.announcementID = '';
@@ -81,3 +81,4 @@ export class AddAnnouncementComponent implements OnInit {
 
   }
 }
+

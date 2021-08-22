@@ -62,7 +62,7 @@ const updateAnnouncement = async (req, res, next) => {
     const error = new HttpError("Error occured", 500);
     return error;
   }
-  if (!announcement) {
+  if (!existingAnnouncement) {
     const error = new HttpError("Data not found", 401);
     return error;
   } else {
@@ -89,3 +89,4 @@ module.exports = {
   getAnnouncementByID,
   updateAnnouncement
 };
+

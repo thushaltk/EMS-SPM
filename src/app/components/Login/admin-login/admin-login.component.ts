@@ -26,13 +26,10 @@ export class AdminLoginComponent implements OnInit {
 
     if(username === "admin" && pwd === "admin"){
       this.router.navigate(['../../admin/dashboard'], { relativeTo: this.route });
+    }else{
+      this._snackBar.open("Login Failed..Try Again...", "OK");
     }
 
 
   }
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
-  }
-
 }
