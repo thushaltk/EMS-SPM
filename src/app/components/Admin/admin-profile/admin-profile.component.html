@@ -1,43 +1,53 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" [(opened)]="opened">
     <div class="text-center" style="width: 100%; padding-top: 20px">
-      <img
-        src="../../assets/images/admin.png"
-        alt="admin icon"
-        style="margin: 0"
-      />
+      <img src="../../assets/images/admin.png" alt="admin icon" style="margin: 0" />
       <br /><br />
       <h3 class="text-center">ADMINISTRATOR</h3>
     </div>
     <hr />
-    <div
-      style="
+    <div style="
         padding-top: 20px;
         padding-bottom: 20px;
         width: 100%;
         display: flex;
         justify-content: center;
-      "
-    >
+      ">
       <a [routerLink]="['']">Home</a>
     </div>
-    <div
-      style="
+    <div style="
         padding-top: 20px;
         padding-bottom: 20px;
         width: 100%;
         display: flex;
         justify-content: center;
-      "
-    >
+      ">
       <a [routerLink]="['dashboard']">Dashboard</a>
     </div>
 
     <mat-accordion>
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-description>
+            <div style="width: 100%; display: flex; justify-content: center">
+              <p>Employees</p>
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div style="
+            padding-top: 30px;
+            padding-bottom: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+          ">
+          <a style="font-size: 17px" [routerLink]="['employee/add']">Add New Employee</a>
+        </div>
+        <div style="width: 100%; display: flex; justify-content: center">
+          <a style="font-size: 17px" [routerLink]="['employee/view']">View Employees</a>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-description>
             <div style="width: 100%; display: flex; justify-content: center">
@@ -46,27 +56,20 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
 
-        <div
-          style="
+        <div style="
             padding-top: 30px;
             padding-bottom: 50px;
             width: 100%;
             display: flex;
             justify-content: center;
-          "
-        >
-          <a style="font-size: 17px" [routerLink]="['announcements/add']"
-            >Add Announcements</a
-          >
+          ">
+          <a style="font-size: 17px" [routerLink]="['announcements/add']">Add Announcements</a>
         </div>
         <div style="width: 100%; display: flex; justify-content: center">
           <a style="font-size: 17px" [routerLink]="['announcements/view']">View Announcements</a>
         </div>
       </mat-expansion-panel>
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-description>
             <div style="width: 100%; display: flex; justify-content: center">
@@ -74,77 +77,35 @@
             </div>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <div
-          style="
+        <div style="
             padding-top: 30px;
             padding-bottom: 50px;
             width: 100%;
             display: flex;
             justify-content: center;
-          "
-        >
-          <a style="font-size: 17px" [routerLink]="['training-programs/add']"
-            >Add Training Programs</a
-          >
+          ">
+          <a style="font-size: 17px" [routerLink]="['training-programs/add']">Add Training Programs</a>
         </div>
-        <div
-          class="text-center"
-          style="width: 100%; display: flex; justify-content: center"
-        >
-          <a style="font-size: 17px" [routerLink]="['training-programs/view']"
-            >View Training Programs</a
-          >
+        <div class="text-center" style="width: 100%; display: flex; justify-content: center">
+          <a style="font-size: 17px" [routerLink]="['training-programs/view']">View Training Programs</a>
         </div>
       </mat-expansion-panel>
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-description>
-            <div style="width: 100%; display: flex; justify-content: center">
-              <p>Employees</p>
-            </div>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div
-          style="
-            padding-top: 30px;
-            padding-bottom: 50px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-          "
-        >
-          <a style="font-size: 17px" [routerLink]="['employee/add']">Add New Employee</a>
-        </div>
-        <div style="width: 100%; display: flex; justify-content: center">
-          <a style="font-size: 17px" [routerLink]="['employee/view']">View Employees</a>
-        </div>
-      </mat-expansion-panel>
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
-        <mat-expansion-panel-header>
-          <mat-panel-description>
-            <div
-              class="text-center"
-              style="width: 100%; display: flex; justify-content: center"
-            >
+            <div class="text-center" style="width: 100%; display: flex; justify-content: center">
               <p style="font-size: 18px;">Attendance and leave</p>
             </div>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <div
-          style="
+        <div style="
             padding-top: 30px;
             padding-bottom: 50px;
             width: 100%;
             display: flex;
             justify-content: center;
-          "
-        >
+          ">
           <a style="font-size: 17px" [routerLink]="['attendance/add']">Add Attendance</a>
         </div>
         <div style="
