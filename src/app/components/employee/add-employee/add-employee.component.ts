@@ -16,7 +16,8 @@ export class AddEmployeeComponent implements OnInit {
   employeeID!: string;
   demoBtnClicked: boolean = false;
   nicInvalid: boolean = true;
-  //nic! : string;
+  dateOfBirth!: any;
+  dateOfJoining!: any;
   employeeDetails: Employees[] = [];
   empDetails!: Employees;
 
@@ -55,6 +56,8 @@ export class AddEmployeeComponent implements OnInit {
             this.empDetails = emp;
             console.log(this.employeeDetails);
             this.empID = emp.empID;
+            this.empDetails.dob = new Date(emp.dob).toISOString();
+            this.empDetails.doj = new Date(emp.doj).toISOString();
           }else{
             continue;
           }
@@ -82,19 +85,30 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.addEmployee);
+    this.dateOfBirth = new Date(this.addEmployee.value.dob);
+    let y = this.dateOfBirth.getFullYear();
+    let m = this.dateOfBirth.getMonth();
+    let d = this.dateOfBirth.getDate();
+    this.dateOfBirth = (y + '-' + (m + 1) + '-' + d);
+
+    this.dateOfJoining = new Date(this.addEmployee.value.doj);
+    let year = this.dateOfJoining.getFullYear();
+    let month = this.dateOfJoining.getMonth();
+    let date = this.dateOfJoining.getDate();
+    this.dateOfJoining = (year + '-' + (month + 1) + '-' + date);
+
     this.submitted = true;
     this.employees.id = this.employeeID;
     this.employees.empID = this.empID;
     this.employees.fullName = this.addEmployee.value.fullName;
-    this.employees.dob = this.addEmployee.value.dob;
+    this.employees.dob = this.dateOfBirth;
     this.employees.nic = this.addEmployee.value.nic;
     this.employees.gender = this.addEmployee.value.gender;
     this.employees.address = this.addEmployee.value.address;
     this.employees.cnumber = this.addEmployee.value.cnumber;
     this.employees.email = this.addEmployee.value.email;
     this.employees.designation = this.addEmployee.value.designation;
-    this.employees.doj = this.addEmployee.value.doj;
+    this.employees.doj = this.dateOfJoining;
     this.employees.reason = this.addEmployee.value.reason;
 
     if (this.mode === "create") {
