@@ -7,19 +7,19 @@
       <div style="display: flex;">
         <mat-form-field style="width: 85%" class="example-full-width" appearance="fill">
           <mat-label>NIC</mat-label>
-          <input required id="nic" name="nic" #nic="ngModel" [ngModel] matInput />
+          <input required id="nic" name="nic" #nic="ngModel" [ngModel]="attendanceDetails?.nic" matInput />
         </mat-form-field>
         <div class="text-center" style="width: 15%; padding: 10px">
-          <button (click)="onGetDetails(nic.value)" mat-raised-button color="primary">Get Details</button>
+          <button type="button" (click)="onGetDetails(nic.value)" mat-raised-button color="primary">Get Details</button>
         </div>
       </div>
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Employee Name</mat-label>
-        <input required id="empName" name="empName" #empName="ngModel" [ngModel] matInput />
+        <input required id="empName" name="empName" #empName="ngModel" [ngModel]="getDetailsBtnClicked ? employeeName : attendanceDetails?.fullName" matInput />
       </mat-form-field>
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Employee ID</mat-label>
-        <input required id="empID" name="empID" #empID="ngModel" [ngModel] matInput />
+        <input disabled required id="empID" name="empID" #empID="ngModel" [ngModel]="getDetailsBtnClicked ? employeeID : attendanceDetails?.empID" matInput />
       </mat-form-field>
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Today's Date</mat-label>
@@ -31,17 +31,17 @@
       <br />
       <mat-form-field style="width: 100%" appearance="fill">
         <mat-label>Designation</mat-label>
-        <mat-select required id="designation" name="designation" [ngModel]>
+        <mat-select disabled required id="designation" name="designation" [ngModel]="getDetailsBtnClicked ? empDesignation : attendanceDetails?.designation">
           <mat-option *ngFor="let data of checkboxesDataList" [value]="data">{{data}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Arrival Time</mat-label>
-        <input required id="arriveTime" name="arriveTime" #arriveTime="ngModel" [ngModel] type="time" matInput />
+        <input required id="arriveTime" name="arriveTime" #arriveTime="ngModel" [ngModel]="attendanceDetails?.arriveTime" type="time" matInput />
       </mat-form-field>
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Leave Time</mat-label>
-        <input required id="leaveTime" name="leaveTime" #leaveTime="ngModel" [ngModel] type="time" matInput />
+        <input required id="leaveTime" name="leaveTime" #leaveTime="ngModel" [ngModel]="attendanceDetails?.leaveTime" type="time" matInput />
       </mat-form-field>
       <br/><br/>
       <div class="text-center" style="width: 100%;">

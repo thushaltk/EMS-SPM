@@ -13,7 +13,7 @@ export class AttendanceService {
   constructor(private http: HttpClient) { }
 
   getAttendance() {
-    this.http.get<{ message: string, attendances: any }>('http://localhost:5000/api/attendance')
+    this.http.get<{ message: string, attendances: any }>('http://localhost:5000/api/attendance/getAttendances')
       .pipe(map((attendanceData) => {
         return attendanceData.attendances.map((attendance: { fullName: any; nic: any; empID: any; date: any; designation: any; arriveTime: any; leaveTime: any; _id: any; }) => {
           return {
@@ -74,7 +74,7 @@ export class AttendanceService {
       leaveTime: attendance.leaveTime
     };
     //Then we send a "put" request to the server with the attendanceID and the attendanceArray
-    this.http.put('http://localhost:5000/api/attendance/' + attendance.id, attendanceArray)
+    this.http.put('http://localhost:5000/api/attendance/updateAttendance/' + attendance.id, attendanceArray)
       .subscribe(response => {
         const updatedAttendances = [...this.attendanceArr];
         const oldAttendanceIndex = updatedAttendances.findIndex(att => att.id === attendanceArray.id);

@@ -1,0 +1,14 @@
+div h1, div h2, div h5, div h4, div p, input, textarea {
+    color: black;
+  }
+  
+  
+  mat-spinner{
+    margin: auto;
+  }
+  
+  .ran{
+    width: 100%;
+    height: 100%;
+  }
+  

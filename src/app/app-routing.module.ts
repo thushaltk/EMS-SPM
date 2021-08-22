@@ -18,6 +18,8 @@ import { AddAttendanceComponent } from './components/attendance/add-attendance/a
 import { EmpSelectComponent } from './components/employee/emp-select/emp-select.component';
 import { EmpRegistryComponent } from './components/employee/emp-registry/emp-registry.component';
 import { ViewAnnouncementsComponent } from './components/announcements/view-announcements/view-announcements.component';
+import { ViewAttendanceComponent } from './components/attendance/view-attendance/view-attendance.component';
+import { ViewTrainingProgramsComponent } from './components/training-programs/view-training-programs/view-training-programs.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
@@ -35,13 +37,18 @@ const appRoutes: Routes = [
       {
         path: 'announcements',
         component: AnnouncementsComponent,
-        children: [{ path: 'add', component: AddAnnouncementComponent }, { path: 'view', component: ViewAnnouncementsComponent }],
+        children: [
+          { path: 'add', component: AddAnnouncementComponent },
+          { path: 'view', component: ViewAnnouncementsComponent },
+          { path: 'edit/:annID', component: AddAnnouncementComponent }],
       },
       {
         path: 'training-programs',
         component: TrainingProgramsComponent,
         children: [
           { path: 'add', component: AddTrainingProgramsComponent },
+          { path: 'view', component: ViewTrainingProgramsComponent },
+          { path: 'edit/:tpID', component: AddTrainingProgramsComponent }
         ],
       },
       { path: 'employee/add', component: AddEmployeeComponent },
@@ -51,7 +58,10 @@ const appRoutes: Routes = [
       {
         path: 'attendance',
         component: AttendanceComponent,
-        children: [{ path: 'add', component: AddAttendanceComponent }],
+        children: [
+          { path: 'add', component: AddAttendanceComponent },
+          { path: 'view', component: ViewAttendanceComponent },
+          { path: 'edit/:id', component: AddAttendanceComponent }],
       },
     ],
   },
@@ -59,7 +69,7 @@ const appRoutes: Routes = [
     path: 'emp',
     component: EmployeeComponent,
     children: [
-      { path: 'empProfile', component: EmpProfileComponent }
+      { path: 'empProfile/:id', component: EmpProfileComponent }
     ]
 
 

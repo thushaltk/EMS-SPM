@@ -1,45 +1,109 @@
-<div style="padding: 30px;">
+<div style="padding: 40px; padding-left: 80px; padding-right: 80px;width: 100%">
+  <div style="display: flex; justify-content: space-between;">
+    <div class="card" style="padding: 30px; margin-right: 40px; border-radius: 5%; box-shadow: 5px 5px 5px #888888; background-color: #C5CAE9;">
+      <h4 class="text-center card-title">Total No. of Employees</h4>
+      <h1 class="text-center card-title">{{totEmployees}}</h1>
+
+    </div>
+    <div class="card" style="padding: 30px; margin-right: 40px; border-radius: 5%; box-shadow: 5px 5px 5px #888888; background-color: #C8E6C9;">
+      <h4 class="text-center card-title">Total No. of Attendance Today</h4>
+      <h1 class="text-center card-title">{{totAttendance}}</h1>
+
+    </div>
+    <div class="card" style="padding: 30px; margin-right: 40px; border-radius: 5%; box-shadow: 5px 5px 5px #888888; background-color: #FFCCBC
+    ;">
+      <h4 class="text-center card-title">Total No. of Absent Today</h4>
+      <h1 class="text-center card-title">{{totAbsent}}</h1>
+
+    </div>
+  </div>
+
+
+  <br /><br /><br />
+
+
   <h1>Announcements</h1>
-  <mat-spinner *ngIf = "isLoading"></mat-spinner>
-  <!-- <div  style="overflow-y: scroll; height:400px; width: 100%;" *ngIf = "!isLoading">
-    <div class="container pull-left" *ngFor="let announcement of announcements" style="background-color:#E6E9E5; width: 1000px; height: fit-content;">
-      <div class="card">
-        <div class="card-header">
-         ***
+  <br />
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <div style="overflow-y: scroll; height:800px; width: 100%;" *ngIf="!isLoading">
+    <div class="container" style="width: 100%; height: 100%;">
+      <div>
+        <div class="card-body" *ngFor="let announcement of announcements">
+          <div class="card" style="padding: 30px; border-radius: 2%; box-shadow: 5px 5px 5px #888888;">
+            <h4 class="card-title">{{announcement.title}}</h4>
+            <p class="card-text">{{announcement.content}}</p>
+            <br />
+            <div class="card-text">
+              <div style="display: flex;">
+                <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">event
+                </mat-icon>
+                <strong>Published Date</strong>:- {{announcement.date}}
+              </div>
+            </div>
+            <br />
+            <div class="card-text">
+              <div style="display: flex;">
+                <mat-icon class="red" *ngIf="announcement.priority === 'High'" style="margin-right: 10px;"
+                  aria-hidden="false" aria-label="Example home icon">priority_high</mat-icon>
+                <mat-icon class="green" *ngIf="announcement.priority === 'Normal'" style="margin-right: 10px;"
+                  aria-hidden="false" aria-label="Example home icon">low_priority</mat-icon>
+                <strong>Priotity</strong>:- {{announcement.priority}}
+              </div>
+            </div>
+            <br />
+            <div style="display: flex;">
+              <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">date_range
+              </mat-icon>
+              <strong>Validity</strong>:- {{announcement.validity}}
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <h4 class="card-title">{{announcement.title}}</h4>
-          <p class="card-text">{{announcement.content}}</p>
-          <p class="card-text">{{announcement.date}}</p>
-          <p class="card-text" [ngStyle]="{'color': announcement.priority == 'HIGH' ? 'red' : 'green'}">{{announcement.priority}} priority</p>
-          <p class="card-text">Validity: {{announcement.validity}}</p>
+      </div>
+    </div>
+
+  </div>
+  <br />
+
+  <h1>Training Programs</h1>
+  <div style="overflow-y: scroll; height:800px; width: 100%;" *ngIf="!isLoading">
+    <div class="container" style="width: 100%; height: 100%;">
+      <div>
+        <div class="card-body" *ngFor="let tp of trainingPrograms">
+          <div class="card" style="padding: 30px; border-radius: 2%; box-shadow: 5px 5px 5px #888888;">
+            <h4 class="card-title">{{tp.title}}</h4>
+            <p class="card-text">{{tp.description}}</p>
+            <br />
+            <div class="card-text">
+              <div style="display: flex;">
+                <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">event
+                </mat-icon>
+                <strong>Date</strong>:- {{tp.date}}
+              </div>
+            </div>
+            <br />
+            <div class="card-text">
+              <div style="display: flex;">
+                <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">email
+                </mat-icon>
+                <strong>Trainer Email</strong>:- {{tp.email}}
+              </div>
+            </div>
+            <br />
+            <div style="display: flex;">
+              <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">home
+              </mat-icon>
+              <strong>Venue</strong>:- {{tp.venue}}
+            </div>
+            <br />
+            <div style="display: flex;">
+              <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">people
+              </mat-icon>
+              <strong>For</strong>:- {{tp.availability}}
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-  </div> -->
-
-  <!-- <h1>Training Programs</h1>
-  <div  style="overflow-y: scroll; height:400px; width: fit-content;">
-
-    <div class="container" *ngFor="let trainingProgram of trainingPrograms" style="background-color: #E6E9E5; width: 1000px; height: fit-content;">
-      <div class="card">
-        <div class="card-header">
-          ***
-        </div>
-        <div class="card-body">
-          <h4 class="card-title">{{trainingProgram.title}} ({{trainingProgram.date}}) </h4>
-          <p>--------------------------------------------------------------------------------------</p>
-          <p class="card-text">{{trainingProgram.description}}</p>
-          <p class="card-text">Available for
-            <span style="font-weight: 500; text-transform: uppercase;" *ngFor="let ele of trainingProgram.availability.values()">
-              {{ele.label}},
-            </span>
-          </p>
-          <p class="card-text">Located at <span style="font-weight: 500; text-transform: uppercase;">{{trainingProgram.location}}</span></p>
-        </div>
-      </div>
-    </div>
-    <br><br><br><br>
-  </div> -->
+  </div>
 </div>
