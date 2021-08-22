@@ -1,6 +1,10 @@
 import { OtherService } from '../../../../../services/other.service';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { EmployeeService } from 'services/employees.service';
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-emp-login',
@@ -8,9 +12,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./emp-login.component.css']
 })
 export class EmpLoginComponent implements OnInit {
+  @ViewChild('loginForm', { static: false })
+  emploginForm: NgForm;
+  private subscription!: Subscription;
+  message: string = 'Password does not match try again!'
+  showError: boolean = false;
+  loginDetails = {
+    nic: '',
+    pwd: '',
+  }
   clicked: boolean = false;
 
-  constructor(private otherService: OtherService, private router: Router) { }
+  constructor(
+    private otherService: OtherService,
+    private _snackBar: MatSnackBar,
+    private employeeService: EmployeeService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     setTimeout(()=> {
@@ -22,6 +40,30 @@ export class EmpLoginComponent implements OnInit {
 
   onNavigate() : void{
     this.router.navigate(['login/emp/changePassword']);
+  }
+
+
+  onChange(){
+    this._snackBar.dismiss();
+  }
+
+  onSubmit(){
+    this.loginDetails.nic = this.emploginForm.value.nic;
+    this.loginDetails.pwd = this.emploginForm.value.pwd;
+
+    this.employeeService.checkPassword(this.loginDetails);
+    this.subscription = this.employeeService.pwdChecked.subscribe((res : any) => {
+      if(res.resMsg === 'No user found'){
+        this._snackBar.open('Login Failed', 'OK');
+      }else if(res.resMsg === 'user found'){
+        this._snackBar.open('Login Success', 'OK');
+        setTimeout(() => {
+          this._snackBar.dismiss();
+          this.router.navigate(['emp/empProfile', res.resData._id]);
+        },200)
+      }
+    })
+
   }
 
 

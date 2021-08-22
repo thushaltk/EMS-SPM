@@ -1,65 +1,66 @@
 <mat-sidenav-container>
-    <mat-sidenav mode="side" [(opened)]="opened">
-      <div class="text-center" style="width: 100%; padding-top: 20px">
-        <img
-          src="../../assets/images/admin.png"
-          alt="admin icon"
-          style="margin: 0"
-        />
-        <br /><br />
-        <h3 class="text-center">NAME</h3>
-      </div>
-      <hr />
-      <div
-        style="
-          padding-top: 20px;
-          padding-bottom: 20px;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-        "
-      >
-        <a [routerLink]="['']">View Announcements</a>
-      </div>
-      <hr />
-      <div
-        style="
-          padding-top: 20px;
-          padding-bottom: 20px;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-        "
-      >
-        <a [routerLink]="['dashboard']">View Training Programs</a>
-      </div>
-      <hr />
-      <div
-        style="
-          padding-top: 20px;
-          padding-bottom: 20px;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-        "
-      >
-        <a [routerLink]="['dashboard']">Apply Leave</a>
-      </div>
-      <hr />
-      <div
-        style="
-          padding-top: 20px;
-          padding-bottom: 20px;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-        "
-      >
-        <a [routerLink]="['dashboard']">View Applied Leave</a>
-      </div>
-    </mat-sidenav>
-    <mat-sidenav-content style="width: 100%;">
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
+  <mat-sidenav mode="side" [(opened)]="opened">
+    <div class="text-center" style="width: 100%; padding-top: 20px">
+      <img
+        src="../../assets/images/admin.png"
+        alt="admin icon"
+        style="margin: 0"
+      />
+      <br /><br />
+      <h3 class="text-center">{{employeeDetails.fullName}}</h3>
+      <p class="text-center">{{employeeDetails.designation}}</p>
+      <h5 class="text-center">{{employeeDetails.empID}}</h5>
+    </div>
+    <hr />
+    <div
+      style="
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      "
+    >
+      <a [routerLink]="['']">View Announcements</a>
+    </div>
+    <hr />
+    <div
+      style="
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      "
+    >
+      <a [routerLink]="['dashboard']">View Training Programs</a>
+    </div>
+    <hr />
+    <div
+      style="
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      "
+    >
+      <a [routerLink]="['dashboard']">Apply Leave</a>
+    </div>
+    <hr />
+    <div
+      style="
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      "
+    >
+      <a [routerLink]="['dashboard']">View Applied Leave</a>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content style="width: 100%;">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

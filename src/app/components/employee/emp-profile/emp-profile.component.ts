@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Employees } from 'models/employees.model';
+import { Subscription } from 'rxjs';
+import { EmployeeService } from 'services/employees.service';
 
 @Component({
   selector: 'app-emp-profile',
@@ -8,9 +12,42 @@ import { Component, OnInit } from '@angular/core';
 export class EmpProfileComponent implements OnInit {
   opened: boolean = true;
   panelOpenState: boolean = false;
-  constructor() { }
+  private subscription: Subscription;
+  employeeDetails : Employees = {
+    id: '',
+    address: '',
+    cnumber: '',
+    designation: '',
+    dob: '',
+    doj: '',
+    email: '',
+    empID: '',
+    fullName: '',
+    gender: '',
+    nic: '',
+    reason: ''
+  };
+  constructor(
+    private router: Router,
+    private employeeService: EmployeeService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(((paramMap: ParamMap) => {
+      //Checks whether the ID is in the URL
+      if (paramMap.has("id")) {
+        console.log("iD is here = ", paramMap.get("id"));
+        this.employeeService.getEmployeeByID(paramMap.get("id"));
+        this.subscription = this.employeeService.employeesChanged.subscribe(res => {
+          this.employeeDetails.fullName = res[0].fullName;
+          this.employeeDetails.empID = res[0].empID;
+          this.employeeDetails.designation=res[0].designation;
+        })
+      } else {
+        console.log("no ID");
+      }
+
+    }))
   }
 
 }

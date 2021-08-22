@@ -10,25 +10,16 @@
           Welcome
         </h1>
         <br />
-        <form>
-          <div class="form-group">
-            <input
-              type="email"
-              class="form-control custom-input"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="EmpID"
-            />
-          </div>
+        <form #adminlogin="ngForm" (ngSubmit)="onSubmit()">
+          <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+            <mat-label>Username</mat-label>
+            <input type="text" required id="username" name="username" #username="ngModel" [ngModel] matInput />
+          </mat-form-field>
           <br />
-          <div class="form-group">
-            <input
-              type="password"
-              class="form-control custom-input"
-              id="exampleInputPassword1"
-              placeholder="Password"
-            />
-          </div>
+          <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" required id="pwd" name="pwd" #pwd="ngModel" [ngModel] matInput />
+          </mat-form-field>
           <br /><br />
           <div class="text-center">
             <button type="submit" class="btn custom-btn-lgn">LOGIN</button>
