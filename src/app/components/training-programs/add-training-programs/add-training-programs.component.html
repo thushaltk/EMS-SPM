@@ -1,29 +1,32 @@
 <div style="padding: 40px; padding-left: 80px; padding-right: 80px; width: 100%">
   <br />
-  <h2 class="text-center" style="padding-top: 10px">Create New Training Program</h2>
+  <div>
+      <h2 class="text-center" *ngIf="mode == 'create'">Create New Training Program</h2>
+      <h2 class="text-center" *ngIf="mode == 'edit'">Update Training Program</h2>
+    </div>
   <br /><br />
   <div class="container-fluid">
     <form #tp="ngForm" (ngSubmit)="onSubmit()">
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Program Title</mat-label>
-        <input required id="title" name="title" #title="ngModel" [ngModel] matInput />
+        <input required id="title" name="title" #title="ngModel" [ngModel]="demoBtnClicked ? trainingPrograms.title : tpDetails?.title" matInput />
       </mat-form-field>
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Date Conducting</mat-label>
         <input [min]="minDate" matInput required id="dateConducting" name="dateConducting" #dateConducting="ngModel"
-          [ngModel] [matDatepicker]="tppicker">
+        [ngModel]="tpDetails?.date" [matDatepicker]="tppicker">
         <mat-datepicker-toggle matSuffix [for]="tppicker"></mat-datepicker-toggle>
         <mat-datepicker #tppicker></mat-datepicker>
 
       </mat-form-field>
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Description</mat-label>
-        <textarea required rows="7" matInput id="desc" name="desc" #desc="ngModel" [ngModel]></textarea>
+        <textarea required rows="7" matInput id="desc" name="desc" #desc="ngModel" [ngModel]="demoBtnClicked ? trainingPrograms.description : tpDetails?.description"></textarea>
       </mat-form-field>
       <br />
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Program Venue</mat-label>
-        <input required id="venue" name="venue" #venue="ngModel" [ngModel] matInput />
+        <input required id="venue" name="venue" #venue="ngModel" [ngModel]="demoBtnClicked ? trainingPrograms.venue : tpDetails?.venue" matInput />
       </mat-form-field>
       <br />
       <br />
@@ -37,11 +40,11 @@
       <br />
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Trainer Email</mat-label>
-        <input type="email" id="email" name="email" #email="ngModel" [ngModel] matInput />
+        <input type="email" id="email" name="email" #email="ngModel" [ngModel]="demoBtnClicked ? trainingPrograms.email : tpDetails?.email" matInput />
       </mat-form-field>
       <br />
       <div class="text-center" style="width: 100%">
-        <button mat-raised-button color="warn">PUBLISH</button>
+        <button [disabled]="!tp.valid" mat-raised-button color="warn">PUBLISH</button>
       </div>
     </form>
   </div>

@@ -19,7 +19,7 @@ import { EmpSelectComponent } from './components/employee/emp-select/emp-select.
 import { EmpRegistryComponent } from './components/employee/emp-registry/emp-registry.component';
 import { ViewAnnouncementsComponent } from './components/announcements/view-announcements/view-announcements.component';
 import { ViewAttendanceComponent } from './components/attendance/view-attendance/view-attendance.component';
-//import { ViewTrainingProgramsComponent } from './components/training-programs/view-training-programs/view-training-programs.component';
+import { ViewTrainingProgramsComponent } from './components/training-programs/view-training-programs/view-training-programs.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
@@ -40,15 +40,16 @@ const appRoutes: Routes = [
         children: [
           { path: 'add', component: AddAnnouncementComponent },
           { path: 'view', component: ViewAnnouncementsComponent },
-          { path: 'edit/:annID', component: AddAnnouncementComponent }],
+          { path: 'edit/:annID', component: AddAnnouncementComponent },
+        ],
       },
       {
         path: 'training-programs',
         component: TrainingProgramsComponent,
         children: [
           { path: 'add', component: AddTrainingProgramsComponent },
-         // { path: 'view', component: ViewTrainingProgramsComponent },
-          { path: 'edit/:tpID', component: AddTrainingProgramsComponent }
+          { path: 'view', component: ViewTrainingProgramsComponent },
+          { path: 'edit/:tpID', component: AddTrainingProgramsComponent },
         ],
       },
       { path: 'employee/add', component: AddEmployeeComponent },
@@ -61,23 +62,20 @@ const appRoutes: Routes = [
         children: [
           { path: 'add', component: AddAttendanceComponent },
           { path: 'view', component: ViewAttendanceComponent },
-          { path: 'edit/:id', component: AddAttendanceComponent }],
+          { path: 'edit/:id', component: AddAttendanceComponent },
+        ],
       },
     ],
   },
   {
     path: 'emp',
     component: EmployeeComponent,
-    children: [
-      { path: 'empProfile/:id', component: EmpProfileComponent }
-    ]
-
-
-  }
+    children: [{ path: 'empProfile/:id', component: EmpProfileComponent }],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

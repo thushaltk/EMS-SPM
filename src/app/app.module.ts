@@ -8,7 +8,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/Header/header.component';
 import { EmpLoginComponent } from './components/Login/emp-login/emp-login.component';
-import {AdminLoginComponent} from './components/Login/admin-login/admin-login.component';
+import { AdminLoginComponent } from './components/Login/admin-login/admin-login.component';
 import { LandingPageComponent } from './components/Landingpage/landingpage.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ChangePasswordComponent } from './components/Login/emp-login/change-password/change-password.component';
@@ -37,8 +37,7 @@ import { EmpSelectComponent } from './components/employee/emp-select/emp-select.
 import { EmpRegistryComponent } from './components/employee/emp-registry/emp-registry.component';
 import { ViewAnnouncementsComponent } from './components/announcements/view-announcements/view-announcements.component';
 import { ViewAttendanceComponent } from './components/attendance/view-attendance/view-attendance.component';
-//import { ViewTrainingProgramsComponent } from './components/training-programs/view-training-programs/view-training-programs.component';
-
+import { ViewTrainingProgramsComponent } from './components/training-programs/view-training-programs/view-training-programs.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +65,7 @@ import { ViewAttendanceComponent } from './components/attendance/view-attendance
     EmpRegistryComponent,
     ViewAnnouncementsComponent,
     ViewAttendanceComponent,
+    ViewTrainingProgramsComponent,
     //ViewTrainingProgramsComponent
   ],
   imports: [
@@ -77,9 +77,15 @@ import { ViewAttendanceComponent } from './components/attendance/view-attendance
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
-  providers: [OtherService, AnnouncementService, TrainingProgramsService, EmployeeService, AttendanceService],
-  bootstrap: [AppComponent]
+  providers: [
+    OtherService,
+    AnnouncementService,
+    TrainingProgramsService,
+    EmployeeService,
+    AttendanceService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

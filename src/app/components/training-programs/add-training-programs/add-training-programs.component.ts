@@ -8,14 +8,15 @@ import { TrainingProgramsService } from 'services/trainingprograms.service';
 @Component({
   selector: 'app-add-training-programs',
   templateUrl: './add-training-programs.component.html',
-  styleUrls: ['./add-training-programs.component.css']
+  styleUrls: ['./add-training-programs.component.css'],
 })
 export class AddTrainingProgramsComponent implements OnInit {
   @ViewChild('tp', { static: false })
   addTrainingProgramsForm!: NgForm;
-  mode = "create";
+  mode = 'create';
   private trainingProgramID!: string;
   conductingDate!: string;
+  demoBtnClicked: boolean = false;
   designations = new FormControl();
   minDate!: Date;
   tpDetails!: TrainingPrograms;
@@ -26,32 +27,45 @@ export class AddTrainingProgramsComponent implements OnInit {
     description: '',
     availability: [],
     venue: '',
-    email: ''
+    email: '',
   };
 
-  checkboxesDataList = ['Manager', 'Engineer', 'Accountant', 'Supervisor', 'Labor', 'Driver', 'Cleaning Staff', 'Security Staff']
+  checkboxesDataList = [
+    'Manager',
+    'Engineer',
+    'Accountant',
+    'Supervisor',
+    'Labor',
+    'Driver',
+    'Cleaning Staff',
+    'Security Staff',
+  ];
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private trainingProgramsService: TrainingProgramsService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute
+  ) {
     this.minDate = new Date();
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(((paramMap: ParamMap) => {
-      if (paramMap.has("trpID")) {
-        this.mode = "edit";
-        this.trainingProgramID = JSON.parse(paramMap.get("trpID") || '');
-        // this.tpDetails = this.trainingProgramsService.getTrainingProgramByID(this.trainingProgramID);
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('tpID')) {
+        this.mode = 'edit';
+        this.trainingProgramID = paramMap.get('tpID');
+        this.tpDetails = this.trainingProgramsService.getTrainingProgramByID(
+          this.trainingProgramID
+        );
       } else {
-        this.mode = "create";
+        this.mode = 'create';
         this.trainingProgramID = '';
       }
-
-    }))
+    });
   }
 
   onSubmit() {
+    this.demoBtnClicked = false;
     console.log(this.designations.value);
     console.log(this.addTrainingProgramsForm.value);
     let y = this.addTrainingProgramsForm.value.dateConducting.getFullYear();
@@ -68,7 +82,7 @@ export class AddTrainingProgramsComponent implements OnInit {
     this.trainingPrograms.email = this.addTrainingProgramsForm.value.email;
 
     //checks wheather update or new
-    if (this.mode === "create") {
+    if (this.mode === 'create') {
       this.trainingProgramsService.addTrainingProgram(this.trainingPrograms);
       this.router.navigate(['../view'], { relativeTo: this.route });
     } else {
