@@ -7,6 +7,8 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class EmployeeService{
   employeesChanged = new Subject<Employees[]>();
+  pwdChanged = new Subject<String>();
+  pwdChecked = new Subject();
   private employeesArr: Employees[] = [];
 
   constructor(private http: HttpClient){}
@@ -16,7 +18,7 @@ export class EmployeeService{
   getEmployee(){
     this.http.get<{message: string, employees: any}>('http://localhost:5000/api/employees')
       .pipe(map((employeeData) => {
-          return employeeData.employees.map((employee: { fullName: any; dob: any; nic: any; empID: any; gender: any; address: any; cnumber: any; email: any; designation: any; doj: any; reason: any; _id: any; }) => {
+          return employeeData.employees.map((employee: { fullName: any; dob: any; nic: any; empID: any; gender: any; address: any; cnumber: any; email: any; empDes: any; doj: any; reason: any; _id: any; }) => {
             return{
               fullName: employee.fullName,
               dob: employee.dob,
@@ -26,7 +28,7 @@ export class EmployeeService{
               address: employee.address,
               cnumber: employee.cnumber,
               email: employee.email,
-              designation: employee.designation,
+              designation: employee.empDes,
               doj: employee.doj,
               reason: employee.reason,
               id: employee._id
@@ -44,7 +46,7 @@ export class EmployeeService{
   getEmployeeByDesignation(employeeDesignation: string){
     this.http.get<{message: string, employees: any}>('http://localhost:5000/api/employees/' + employeeDesignation)
       .pipe(map((employeeData) => {
-          return employeeData.employees.map((employee: { fullName: any; dob: any; nic: any; empID: any; gender: any; address: any; cnumber: any; email: any; designation: any; doj: any; reason: any; _id: any; }) => {
+          return employeeData.employees.map((employee: { fullName: any; dob: any; nic: any; empID: any; gender: any; address: any; cnumber: any; email: any; empDes: any; doj: any; reason: any; _id: any; }) => {
             return{
               fullName: employee.fullName,
               dob: employee.dob,
@@ -54,7 +56,7 @@ export class EmployeeService{
               address: employee.address,
               cnumber: employee.cnumber,
               email: employee.email,
-              designation: employee.designation,
+              designation: employee.empDes,
               doj: employee.doj,
               reason: employee.reason,
               id: employee._id
@@ -66,6 +68,34 @@ export class EmployeeService{
         this.employeesChanged.next(this.employeesArr.slice());
       });
     return this.employeesArr.slice();
+  }
+
+  getEmployeeByID(id: string){
+    this.http.get<{data: any}>('http://localhost:5000/api/employees/get-by-id/' + id)
+      .pipe(map((employeeData) => {
+          return employeeData.data.map((employee: { fullName: any; dob: any; nic: any; empID: any; gender: any; address: any; cnumber: any; email: any; empDes: any; doj: any; reason: any; _id: any; }) => {
+            return{
+              fullName: employee.fullName,
+              dob: employee.dob,
+              nic: employee.nic,
+              empID: employee.empID,
+              gender: employee.gender,
+              address: employee.address,
+              cnumber: employee.cnumber,
+              email: employee.email,
+              designation: employee.empDes,
+              doj: employee.doj,
+              reason: employee.reason,
+              id: employee._id
+            };
+          });
+      }))
+      .subscribe((transformedEmployees) => {
+        this.employeesArr = transformedEmployees;
+        this.employeesChanged.next(this.employeesArr.slice());
+      });
+    return this.employeesArr.slice();
+
   }
 
 
@@ -128,5 +158,30 @@ export class EmployeeService{
         this.employeesArr = updatedEmployee;
         this.employeesChanged.next(this.employeesArr.slice());
       })
+  }
+
+  updateEmployeePassword(createPwdDetails : any){
+    const crPwd = {
+      nic: createPwdDetails.nic,
+      pwd: createPwdDetails.pwd,
+      confpwd: createPwdDetails.confpwd
+    };
+    this.http.patch<{message: string}>("http://localhost:5000/api/employees/", crPwd).subscribe((responseData) => {
+      console.log(responseData.message);
+      this.pwdChanged.next(responseData.message);
+    })
+
+  }
+
+
+  checkPassword(loginDetails: any){
+    const loginData = {
+      nic: loginDetails.nic,
+      pwd: loginDetails.pwd
+    };
+    this.http.post<{message: string, data: any}>("http://localhost:5000/api/employees/check-password", loginData).subscribe(responseData => {
+        this.pwdChecked.next(
+          {resMsg: responseData.message, resData: responseData.data});
+    })
   }
 }
