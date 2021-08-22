@@ -15,7 +15,9 @@ export class EmpRegistryComponent implements OnInit {
   designation!: string;
   title!: string;
   term!: string;
+  search!: string;
   isLoading = false;
+  displayedColumns: string[] = ['EMPID', 'Full Name', 'NIC', 'DOB', 'Gender', 'Address', 'Contact No.', 'Email', 'DOJ' , 'Medical', 'Action'];
 
   constructor(private router: Router, private employeeService: EmployeeService,
     private route: ActivatedRoute) { }
