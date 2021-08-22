@@ -1,0 +1,51 @@
+<div style="padding: 40px; width: 100%; height: 100%">
+  <h1>Training Program Management</h1>
+  <br>
+  <mat-spinner *ngIf = "isLoading"></mat-spinner>
+  <div  id="dataSet" style="height:100vh; width: 100%;" *ngIf = "!isLoading">
+    <div class="container pull-left" style=" width: 100%; height: 100%;" >
+        <div style="display: flex;" class="card-header">
+          <input style="width: 300px; margin-top: 10px; margin-left: 10px;" class="form-control" [(ngModel)]="search" type="text" placeholder="Search" aria-label="Search">
+          <button mat-raised-button color="primary" [routerLink]="['../report']" style="margin-left: 20px;">GENERATE REPORT</button>
+        </div>
+        <div class="card-body" *ngFor="let tp of trainingPrograms | filter:search">
+          <div class="card" style="padding: 30px; border-radius: 2%; box-shadow: 5px 5px 5px #888888;">
+          <h3 class="card-title">{{tp.title}}</h3>
+          <p class="card-text">{{tp.description}}</p>
+          <br/>
+          <div class="card-text">
+            <div style="display: flex;">
+              <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">event</mat-icon>
+              <strong>Date</strong>:- {{tp.date}}
+            </div>
+            <br/>
+            <div style="display: flex;">
+              <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">email</mat-icon>
+              <strong>Trainer Email</strong>:-  {{tp.email}} <br/>
+            </div>
+            <br/>
+            <div style="display: flex;">
+              <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+              <strong>Venue</strong>:- {{tp.venue}} <br/>
+
+            </div>
+            <br/>
+            <div style="display: flex;">
+              <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">people</mat-icon>
+              <strong>For</strong>:- {{tp.availability}} <br/>
+
+            </div>
+          </div>
+          <div style="width: 100%; display: flex; justify-content: flex-end;">
+            <button mat-raised-button color="primary" [routerLink]="['../edit', tp.id]" style="margin-right: 10px;">EDIT</button>
+            <button mat-raised-button color="warn"(click)="onDelete(tp.id)">DELETE</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+  </div>
+  <br><br><br><br><br><br>
+
+</div>
