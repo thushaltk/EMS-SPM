@@ -14,6 +14,7 @@ export class EmpProfileComponent implements OnInit {
   panelOpenState: boolean = false;
   private subscription: Subscription;
   employeeDetails : Employees = {
+    imgUrl:'',
     id: '',
     address: '',
     cnumber: '',
@@ -39,6 +40,8 @@ export class EmpProfileComponent implements OnInit {
         console.log("iD is here = ", paramMap.get("id"));
         this.employeeService.getEmployeeByID(paramMap.get("id"));
         this.subscription = this.employeeService.employeesChanged.subscribe(res => {
+          console.log(res[0].imgUrl)
+          this.employeeDetails.imgUrl = res[0].imgUrl;
           this.employeeDetails.fullName = res[0].fullName;
           this.employeeDetails.empID = res[0].empID;
           this.employeeDetails.designation=res[0].designation;

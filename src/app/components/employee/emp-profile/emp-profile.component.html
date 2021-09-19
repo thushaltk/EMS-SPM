@@ -2,9 +2,11 @@
   <mat-sidenav mode="side" [(opened)]="opened">
     <div class="text-center" style="width: 100%; padding-top: 20px">
       <img
-        src="../../assets/images/admin.png"
+        src={{employeeDetails.imgUrl}}
         alt="admin icon"
         style="margin: 0"
+        width="100px"
+        height="100px"
       />
       <br /><br />
       <h3 class="text-center">{{employeeDetails.fullName}}</h3>
@@ -58,6 +60,18 @@
       "
     >
       <a [routerLink]="['dashboard']">View Applied Leave</a>
+    </div>
+    <hr />
+    <div
+      style="
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      "
+    >
+      <a [routerLink]="['dashboard']">Logout</a>
     </div>
   </mat-sidenav>
   <mat-sidenav-content style="width: 100%;">

@@ -20,6 +20,7 @@ import { EmpRegistryComponent } from './components/employee/emp-registry/emp-reg
 import { ViewAnnouncementsComponent } from './components/announcements/view-announcements/view-announcements.component';
 import { ViewAttendanceComponent } from './components/attendance/view-attendance/view-attendance.component';
 import { ViewTrainingProgramsComponent } from './components/training-programs/view-training-programs/view-training-programs.component';
+import { EmpReportComponent } from './components/employee/emp-report/emp-report.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
       },
       { path: 'employee/add', component: AddEmployeeComponent },
       { path: 'employee/view', component: EmpSelectComponent },
+      { path: 'employee/report', component: EmpReportComponent },
       { path: 'employee/:designation', component: EmpRegistryComponent },
       { path: 'employee/edit/:id', component: AddEmployeeComponent },
       {

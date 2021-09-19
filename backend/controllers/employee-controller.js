@@ -5,6 +5,7 @@ const HttpError = require("../models/http-error");
 //Add Employees
 const addEmployee = async (req, res, next) => {
   const createEmployee = new Employee({
+    imgUrl: req.body.imgUrl,
     fullName: req.body.fullName,
     dob: req.body.dob,
     nic: req.body.nic,

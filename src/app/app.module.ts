@@ -38,6 +38,9 @@ import { EmpRegistryComponent } from './components/employee/emp-registry/emp-reg
 import { ViewAnnouncementsComponent } from './components/announcements/view-announcements/view-announcements.component';
 import { ViewAttendanceComponent } from './components/attendance/view-attendance/view-attendance.component';
 import { ViewTrainingProgramsComponent } from './components/training-programs/view-training-programs/view-training-programs.component';
+import { NicValidationDirective } from './directives/nic-validation-directive';
+import { EmpReportComponent } from './components/employee/emp-report/emp-report.component';
+import { MyAccountComponent } from './components/employee/emp-profile/my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,10 @@ import { ViewTrainingProgramsComponent } from './components/training-programs/vi
     ViewAnnouncementsComponent,
     ViewAttendanceComponent,
     ViewTrainingProgramsComponent,
-    ViewTrainingProgramsComponent
+    ViewTrainingProgramsComponent,
+    NicValidationDirective,
+    EmpReportComponent,
+    MyAccountComponent
   ],
   imports: [
     AppRoutingModule,

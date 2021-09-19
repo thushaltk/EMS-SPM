@@ -18,8 +18,9 @@ export class EmployeeService{
   getEmployee(){
     this.http.get<{message: string, employees: any}>('http://localhost:5000/api/employees')
       .pipe(map((employeeData) => {
-          return employeeData.employees.map((employee: { fullName: any; dob: any; nic: any; empID: any; gender: any; address: any; cnumber: any; email: any; empDes: any; doj: any; reason: any; _id: any; }) => {
+          return employeeData.employees.map((employee: { imgUrl: any; fullName: any; dob: any; nic: any; empID: any; gender: any; address: any; cnumber: any; email: any; empDes: any; doj: any; reason: any; _id: any; }) => {
             return{
+              imgUrl: employee.imgUrl,
               fullName: employee.fullName,
               dob: employee.dob,
               nic: employee.nic,
@@ -46,8 +47,9 @@ export class EmployeeService{
   getEmployeeByDesignation(employeeDesignation: string){
     this.http.get<{message: string, employees: any}>('http://localhost:5000/api/employees/' + employeeDesignation)
       .pipe(map((employeeData) => {
-          return employeeData.employees.map((employee: { fullName: any; dob: any; nic: any; empID: any; gender: any; address: any; cnumber: any; email: any; empDes: any; doj: any; reason: any; _id: any; }) => {
+          return employeeData.employees.map((employee: { imgUrl: any; fullName: any; dob: any; nic: any; empID: any; gender: any; address: any; cnumber: any; email: any; empDes: any; doj: any; reason: any; _id: any; }) => {
             return{
+              imgUrl: employee.imgUrl,
               fullName: employee.fullName,
               dob: employee.dob,
               nic: employee.nic,
@@ -73,8 +75,9 @@ export class EmployeeService{
   getEmployeeByID(id: string){
     this.http.get<{data: any}>('http://localhost:5000/api/employees/get-by-id/' + id)
       .pipe(map((employeeData) => {
-          return employeeData.data.map((employee: { fullName: any; dob: any; nic: any; empID: any; gender: any; address: any; cnumber: any; email: any; empDes: any; doj: any; reason: any; _id: any; }) => {
+          return employeeData.data.map((employee: { imgUrl: any; fullName: any; dob: any; nic: any; empID: any; gender: any; address: any; cnumber: any; email: any; empDes: any; doj: any; reason: any; _id: any; }) => {
             return{
+              imgUrl: employee.imgUrl,
               fullName: employee.fullName,
               dob: employee.dob,
               nic: employee.nic,
@@ -102,6 +105,7 @@ export class EmployeeService{
   //Add Employee details to the database
   addEmployee(employee: Employees){
     const employeeArray: Employees = {
+      imgUrl: employee.imgUrl,
       id: employee.id,
       fullName: employee.fullName,
       dob: employee.dob,
@@ -128,6 +132,7 @@ export class EmployeeService{
   updateEmployees(employee: Employees) {
     console.log('employee=', employee);
     const employeeArray: Employees = {
+      imgUrl: employee.imgUrl,
       id: employee.id,
       fullName: employee.fullName,
       dob: employee.dob,

@@ -57,6 +57,7 @@ export class EmpLoginComponent implements OnInit {
         this._snackBar.open('Login Failed', 'OK');
       }else if(res.resMsg === 'user found'){
         this._snackBar.open('Login Success', 'OK');
+        localStorage.setItem('empDetails', JSON.stringify(res.resData));
         setTimeout(() => {
           this._snackBar.dismiss();
           this.router.navigate(['emp/empProfile', res.resData._id]);
