@@ -1,5 +1,6 @@
 export class Employees{
   constructor(
+    public imgUrl: string,
     public id: string,
     public fullName: string,
     public dob: string,

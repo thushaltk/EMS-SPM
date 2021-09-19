@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const employeeSchema = mongoose.Schema({
+  imgUrl: {type: String, required: true},
   fullName: { type: String, required: true },
   dob: { type: String, required: true },
   nic: { type: String, required: true },
