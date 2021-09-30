@@ -21,6 +21,15 @@ import { ViewAnnouncementsComponent } from './components/announcements/view-anno
 import { ViewAttendanceComponent } from './components/attendance/view-attendance/view-attendance.component';
 import { ViewTrainingProgramsComponent } from './components/training-programs/view-training-programs/view-training-programs.component';
 import { EmpReportComponent } from './components/employee/emp-report/emp-report.component';
+import { MyAccountComponent } from './components/employee/emp-profile/my-account/my-account.component';
+//import { EmpAnnouncementsComponent } from './components/employee/emp-profile/emp-announcements/emp-announcements.component';
+//import { EmpTrainingProgramsComponent } from './components/employee/emp-profile/emp-training-programs/emp-training-programs.component';
+import { EmpLeaveComponent } from './components/employee/emp-profile/emp-leave/emp-leave.component';
+import { ApplyLeaveComponent } from './components/employee/emp-profile/emp-leave/apply-leave/apply-leave.component';
+import { ViewLeaveComponent } from './components/employee/emp-profile/emp-leave/view-leave/view-leave.component';
+import { ViewLeavesComponent } from './components/leaves/view-leaves/view-leaves.component';
+//import { AnnouncementReportComponent } from './components/announcements/announcement-report/announcement-report.component';
+//import { TrainingProgramsReportComponent } from './components/training-programs/training-programs-report/training-programs-report.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
@@ -42,6 +51,7 @@ const appRoutes: Routes = [
           { path: 'add', component: AddAnnouncementComponent },
           { path: 'view', component: ViewAnnouncementsComponent },
           { path: 'edit/:annID', component: AddAnnouncementComponent },
+          //{ path: 'report', component: AnnouncementReportComponent }
         ],
       },
       {
@@ -51,11 +61,16 @@ const appRoutes: Routes = [
           { path: 'add', component: AddTrainingProgramsComponent },
           { path: 'view', component: ViewTrainingProgramsComponent },
           { path: 'edit/:tpID', component: AddTrainingProgramsComponent },
+          //{ path: 'report', component: TrainingProgramsReportComponent }
         ],
+      },
+      {
+        path: 'leaves/view',
+        component: ViewLeavesComponent,
       },
       { path: 'employee/add', component: AddEmployeeComponent },
       { path: 'employee/view', component: EmpSelectComponent },
-      { path: 'employee/report', component: EmpReportComponent },
+      { path: 'employee/report/:designation', component: EmpReportComponent },
       { path: 'employee/:designation', component: EmpRegistryComponent },
       { path: 'employee/edit/:id', component: AddEmployeeComponent },
       {
@@ -72,7 +87,19 @@ const appRoutes: Routes = [
   {
     path: 'emp',
     component: EmployeeComponent,
-    children: [{ path: 'empProfile/:id', component: EmpProfileComponent }],
+    children: [
+      {
+        path: 'empProfile/:id', component: EmpProfileComponent, children: [
+          { path: 'account', component: MyAccountComponent },
+          //{ path: 'announcements', component: EmpAnnouncementsComponent },
+          //{ path: 'training-programs', component: EmpTrainingProgramsComponent },
+          { path: 'leave', component: EmpLeaveComponent, children: [
+            { path: 'apply', component: ApplyLeaveComponent },
+            { path: 'view', component: ViewLeaveComponent },
+          ] },
+        ]
+      },
+    ]
   },
 ];
 
@@ -80,4 +107,4 @@ const appRoutes: Routes = [
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

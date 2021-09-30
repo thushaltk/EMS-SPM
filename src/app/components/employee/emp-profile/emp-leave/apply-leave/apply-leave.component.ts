@@ -6,8 +6,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Employees } from 'models/employees.model';
 import { Leave } from 'models/Leave.model';
 import { Subscription } from 'rxjs';
-import { EmployeeService } from '../../../../../../services/employees.service';
-import { LeavesService } from '../../../../../../services/Leaves.service';
+import { EmployeeService } from '../../../../../../../services/employees.service';
+import { LeavesService } from '../../../../../../../services/Leaves.service';
 //import { AuthService } from '../../../_services/auth.service';
 
 @Component({

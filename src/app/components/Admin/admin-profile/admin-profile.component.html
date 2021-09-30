@@ -1,9 +1,8 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" [(opened)]="opened">
-    <div class="text-center" style="width: 100%; padding-top: 20px">
-      <img src="../../assets/images/admin.png" alt="admin icon" style="margin: 0" />
-      <br /><br />
-      <h3 class="text-center">ADMINISTRATOR</h3>
+    <div class="text-center" style="width: 100%; padding-top: 20px; display: flex; justify-content: center; flex-direction: column; align-items: center;">
+      <ng-lottie [options]="options" width="150px" height="150px" (animationCreated)="animationCreated($event)"></ng-lottie>
+      <h3 style="margin-top: -20px;" class="text-center">ADMINISTRATOR</h3>
     </div>
     <hr />
     <div style="
@@ -120,7 +119,7 @@
         width: 100%;
         display: flex;
         justify-content: center;">
-          <a style="font-size: 17px" [routerLink]="['']">View Leaves</a>
+          <a style="font-size: 17px" [routerLink]="['leaves/view']">View Leaves</a>
         </div>
       </mat-expansion-panel>
     </mat-accordion>

@@ -8,11 +8,11 @@ import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
-  selector: 'app-view-leaves',
-  templateUrl: './view-leaves.component.html',
-  styleUrls: ['./view-leaves.component.css']
+  selector: 'app-view-leave',
+  templateUrl: './view-leave.component.html',
+  styleUrls: ['./view-leave.component.css']
 })
-export class ViewLeavesComponent implements OnInit {
+export class ViewLeaveComponent implements OnInit {
   options: AnimationOptions = {
     path: '../../../../../../assets/animations/nodata.json',
   };
