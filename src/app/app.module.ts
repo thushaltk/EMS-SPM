@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/Header/header.component';
 import { EmpLoginComponent } from './components/Login/emp-login/emp-login.component';
@@ -25,8 +26,7 @@ import { AddTrainingProgramsComponent } from './components/training-programs/add
 import { EmployeeComponent } from './components/employee/employee.component';
 import { EmpProfileComponent } from './components/employee/emp-profile/emp-profile.component';
 import { LeavesComponent } from './components/leaves/leaves.component';
-import { ApplyLeaveComponent } from './components/leaves/apply-leave/apply-leave.component';
-import { ViewLeaveComponent } from './components/leaves/view-leave/view-leave.component';
+import { ViewLeavesComponent } from './components/leaves/view-leaves/view-leaves.component';
 import { AddEmployeeComponent } from './components/employee/add-employee/add-employee.component';
 import { AttendanceComponent } from './components/attendance/attendance.component';
 import { AddAttendanceComponent } from './components/attendance/add-attendance/add-attendance.component';
@@ -41,6 +41,17 @@ import { ViewTrainingProgramsComponent } from './components/training-programs/vi
 import { NicValidationDirective } from './directives/nic-validation-directive';
 import { EmpReportComponent } from './components/employee/emp-report/emp-report.component';
 import { MyAccountComponent } from './components/employee/emp-profile/my-account/my-account.component';
+import { EmpLeaveComponent } from './components/employee/emp-profile/emp-leave/emp-leave.component';
+import { ViewLeaveComponent } from './components/employee/emp-profile/emp-leave/view-leave/view-leave.component';
+import { ApplyLeaveComponent } from './components/employee/emp-profile/emp-leave/apply-leave/apply-leave.component';
+import { LeavesService } from 'services/Leaves.service';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+
+
+export function playerFactory() {
+  return player;
+}
 
 @NgModule({
   declarations: [
@@ -59,10 +70,10 @@ import { MyAccountComponent } from './components/employee/emp-profile/my-account
     EmployeeComponent,
     EmpProfileComponent,
     LeavesComponent,
-    ApplyLeaveComponent,
-    ViewLeaveComponent,
+    ViewLeavesComponent,
     AddEmployeeComponent,
     AttendanceComponent,
+    ViewLeaveComponent,
     AddAttendanceComponent,
     EmpSelectComponent,
     EmpRegistryComponent,
@@ -72,7 +83,9 @@ import { MyAccountComponent } from './components/employee/emp-profile/my-account
     ViewTrainingProgramsComponent,
     NicValidationDirective,
     EmpReportComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    EmpLeaveComponent,
+    ApplyLeaveComponent
   ],
   imports: [
     AppRoutingModule,
@@ -84,6 +97,7 @@ import { MyAccountComponent } from './components/employee/emp-profile/my-account
     MaterialModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    LottieModule.forRoot({ player: playerFactory }),
   ],
   providers: [
     OtherService,
@@ -91,6 +105,7 @@ import { MyAccountComponent } from './components/employee/emp-profile/my-account
     TrainingProgramsService,
     EmployeeService,
     AttendanceService,
+    LeavesService
   ],
   bootstrap: [AppComponent],
 })

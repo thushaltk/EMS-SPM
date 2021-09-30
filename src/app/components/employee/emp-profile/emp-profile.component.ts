@@ -13,8 +13,9 @@ export class EmpProfileComponent implements OnInit {
   opened: boolean = true;
   panelOpenState: boolean = false;
   private subscription: Subscription;
-  employeeDetails : Employees = {
-    imgUrl:'',
+  tempEmployees: Employees[] = [];
+  employeeDetails: Employees = {
+    imgUrl: '',
     id: '',
     address: '',
     cnumber: '',
@@ -40,17 +41,27 @@ export class EmpProfileComponent implements OnInit {
         console.log("iD is here = ", paramMap.get("id"));
         this.employeeService.getEmployeeByID(paramMap.get("id"));
         this.subscription = this.employeeService.employeesChanged.subscribe(res => {
-          console.log(res[0].imgUrl)
-          this.employeeDetails.imgUrl = res[0].imgUrl;
-          this.employeeDetails.fullName = res[0].fullName;
-          this.employeeDetails.empID = res[0].empID;
-          this.employeeDetails.designation=res[0].designation;
+          console.log(res);
+          if (res[0].id === paramMap.get("id")) {
+            this.employeeDetails.imgUrl = res[0].imgUrl;
+            this.employeeDetails.fullName = res[0].fullName;
+            this.employeeDetails.empID = res[0].empID;
+            this.employeeDetails.designation = res[0].designation;
+            localStorage.setItem('empid',JSON.stringify(res[0].empID));
+          }
+
         })
       } else {
         console.log("no ID");
       }
 
     }))
+  };
+
+  onLogout() {
+    localStorage.removeItem('empDetails');
+    localStorage.removeItem('islogged');
+    this.router.navigate(['./login/empLogin'])
   }
 
 }

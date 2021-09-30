@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AnimationItem } from 'lottie-web';
+import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-admin-profile',
@@ -8,10 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class AdminProfileComponent implements OnInit {
   opened: boolean = true;
   panelOpenState: boolean = false;
-  
-  
+  options: AnimationOptions = {
+    path: '../../../../assets/animations/profile.json',
+  };
+
+
   constructor(
-    
+
   ) {}
 
   ngOnInit(): void {
@@ -23,5 +28,9 @@ export class AdminProfileComponent implements OnInit {
     //     this.isLoading = false;
     //   }
     // );
+  }
+
+  animationCreated(animationItem: AnimationItem): void {
+    console.log(animationItem);
   }
 }

@@ -30,16 +30,17 @@ const getLeaves = async (req, res, next) => {
     } catch (err) {
       throw new HttpError("Fetching leave failed, try again later", 500);
     }
-    res.send(leaves);
+    res.send({ message: "Data retreived successfully", data: leaves });
 };
 
 
 //Retrieve  Leave by empID
 const getLeaveByID = async (req, res, next) => {
-    const leavID = req.params.id;
+    const empID = req.params.id;
     let leave;
     try {
-        leave = await Leave.find({ _id: leavID });
+      console.log(empID)
+        leave = await Leave.find({ empID: empID });
       } catch (err) {
         const error = new HttpError("Cannot fine the requested data..", 500);
         return error;
@@ -60,7 +61,7 @@ const updateLeave = async (req, res, next) => {
         const error = new HttpError("Error occured", 500);
         return error;
     }
-    if(!leave){
+    if(!existingLeave){
         const error =  new HttpError("Data not found", 401);
         return error;
     }else{

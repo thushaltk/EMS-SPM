@@ -1,0 +1,52 @@
+<div style="width: 100%; height: 100%;">
+  <div
+    style="display: flex; justify-content: center; flex-direction: column;width: 100%; text-align: center; align-items: center;">
+    <br>
+    <br>
+    <h1>Request for a Leave</h1>
+    <br>
+    <mat-card style="width: 80%; border-radius: 10px 10px 10px 10px; box-shadow: 5px 5px 5px #888888;">
+      <div class="card-body">
+        <form #leave="ngForm" (ngSubmit)="onSubmit()">
+          <mat-form-field style="width: 80%" class="example-full-width" appearance="fill">
+            <mat-label for="empID">EMP ID</mat-label>
+            <input matInput type="text" id="empid" class="form-control" [(ngModel)]="this.empID" name="empid" #empid
+              required />
+            <mat-error *ngIf="empid.errors">Please enter EMPID</mat-error>
+          </mat-form-field>
+          <mat-form-field style="width: 80%" class="example-full-width" appearance="fill">
+            <mat-label for="enterTime">Enter Time</mat-label>
+            <input matInput #enterTime type="time" id="enterTime" class="form-control" ngModel name="enterTime" required />
+            <mat-error *ngIf="enterTime.errors">Please enter time</mat-error>
+          </mat-form-field>
+          <mat-form-field style="width: 80%" class="example-full-width" appearance="fill">
+            <mat-label for="leaveStart">Leave Start Date</mat-label>
+            <input [min]="todate" matInput #leaveStart id="leaveStart" class="form-control" ngModel name="leaveStart"
+              [matDatepicker]="startdatepicker" required />
+            <mat-datepicker-toggle matSuffix [for]="startdatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #startdatepicker></mat-datepicker>
+            <mat-error *ngIf="leaveStart.errors">Please enter leave start data</mat-error>
+          </mat-form-field>
+          <mat-form-field style="width: 80%" class="example-full-width" appearance="fill">
+            <mat-label for="leaveEnd">Leave End Date</mat-label>
+            <input [min]="todate" matInput #leaveEnd id="leaveEnd" class="form-control" ngModel name="leaveEnd" required [matDatepicker]="enddatepicker" />
+            <mat-datepicker-toggle matSuffix [for]="enddatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #enddatepicker></mat-datepicker>
+            <mat-error *ngIf="leaveEnd.errors">Please enter leave end data</mat-error>
+          </mat-form-field>
+          <mat-form-field style="width: 80%" class="example-full-width" appearance="fill">
+            <mat-label for="reason">Reason</mat-label>
+            <input matInput type="text" id="reason" class="form-control" ngModel name="reason" #reason required />
+            <mat-error *ngIf="reason.errors">Please enter reason</mat-error>
+          </mat-form-field>
+          <div class="text-center pt-4" style="display: flex; justify-content: center;">
+            <mat-spinner diameter="40" *ngIf="isLoading"></mat-spinner>
+            <button *ngIf="!isLoading" type="submit" mat-raised-button color="primary" [disabled]="!leave.valid">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+    </mat-card>
+    <br><br><br>
+  </div>
+
+</div>

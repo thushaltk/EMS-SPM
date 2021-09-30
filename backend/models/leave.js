@@ -8,4 +8,4 @@ const LeaveSchema = mongoose.Schema({
   status: {type: String, required: true}
 });
 
-module.exports = mongoose.model('LongLeave', LeaveSchema);
+module.exports = mongoose.model('Leave', LeaveSchema);

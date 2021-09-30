@@ -1,77 +1,64 @@
 <mat-sidenav-container>
-  <mat-sidenav mode="side" [(opened)]="opened">
+  <mat-sidenav style="width: 23%;" mode="side" [(opened)]="opened">
     <div class="text-center" style="width: 100%; padding-top: 20px">
-      <img
-        src={{employeeDetails.imgUrl}}
-        alt="admin icon"
-        style="margin: 0"
-        width="100px"
-        height="100px"
-      />
+      <img [src]="employeeDetails.imgUrl || '../../../../assets/images/dp.png'" alt="admin icon"
+        style="margin: 0; border-radius: 100%;" width="100px" height="100px" />
       <br /><br />
-      <h3 class="text-center">{{employeeDetails.fullName}}</h3>
+      <a [routerLink]="['account']">
+        <h3 class="text-center">{{employeeDetails.fullName}}</h3>
+      </a>
       <p class="text-center">{{employeeDetails.designation}}</p>
       <h5 class="text-center">{{employeeDetails.empID}}</h5>
     </div>
     <hr />
-    <div
-      style="
+    <div style="
         padding-top: 20px;
         padding-bottom: 20px;
         width: 100%;
         display: flex;
         justify-content: center;
-      "
-    >
-      <a [routerLink]="['']">View Announcements</a>
+      ">
+      <a [routerLink]="['announcements']">View Announcements</a>
     </div>
     <hr />
-    <div
-      style="
+    <div style="
         padding-top: 20px;
         padding-bottom: 20px;
         width: 100%;
         display: flex;
         justify-content: center;
-      "
-    >
-      <a [routerLink]="['dashboard']">View Training Programs</a>
+      ">
+      <a [routerLink]="['training-programs']">View Training Programs</a>
     </div>
     <hr />
-    <div
-      style="
+    <div style="
         padding-top: 20px;
         padding-bottom: 20px;
         width: 100%;
         display: flex;
         justify-content: center;
-      "
-    >
-      <a [routerLink]="['dashboard']">Apply Leave</a>
+      ">
+      <a [routerLink]="['leave/apply']">Apply Leave</a>
     </div>
     <hr />
-    <div
-      style="
+    <div style="
         padding-top: 20px;
         padding-bottom: 20px;
         width: 100%;
         display: flex;
         justify-content: center;
-      "
-    >
-      <a [routerLink]="['dashboard']">View Applied Leave</a>
+      ">
+      <a [routerLink]="['leave/view']">View Applied Leave</a>
     </div>
     <hr />
-    <div
-      style="
+    <div style="
         padding-top: 20px;
         padding-bottom: 20px;
         width: 100%;
         display: flex;
         justify-content: center;
-      "
-    >
-      <a [routerLink]="['dashboard']">Logout</a>
+      ">
+      <a [routerLink] (click)="onLogout()">Logout</a>
     </div>
   </mat-sidenav>
   <mat-sidenav-content style="width: 100%;">

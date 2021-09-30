@@ -11,9 +11,17 @@ import { OtherService } from 'services/other.service';
 export class HeaderComponent implements OnInit {
   clicked: boolean = false;
   toggled: boolean = false;
+  loggedIn: boolean = false;
   constructor(private otherService: OtherService, private router: Router) {
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(localStorage.getItem('islogged')){
+
+      this.loggedIn = true;
+    }else{
+      this.loggedIn = false;
+    }
+  }
 
   clickHere(){
     this.otherService.setClicked(true);
@@ -22,5 +30,16 @@ export class HeaderComponent implements OnInit {
 
   OnToggle(){
     this.toggled = !this.toggled;
+  }
+
+
+  onLogout(){
+    localStorage.removeItem('empDetails');
+    localStorage.removeItem('islogged');
+    this.router.navigate(['login/empLogin'])
+  }
+
+  get log(){
+    return this.loggedIn;
   }
 }
