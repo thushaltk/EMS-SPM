@@ -58,9 +58,10 @@ export class EmpLoginComponent implements OnInit {
       }else if(res.resMsg === 'user found'){
         this._snackBar.open('Login Success', 'OK');
         localStorage.setItem('empDetails', JSON.stringify(res.resData));
+        localStorage.setItem('islogged', JSON.stringify(true));
         setTimeout(() => {
           this._snackBar.dismiss();
-          this.router.navigate(['emp/empProfile', res.resData._id]);
+          this.router.navigate([`emp/empProfile/${res.resData._id}/account`]);
         },200)
       }
     })
