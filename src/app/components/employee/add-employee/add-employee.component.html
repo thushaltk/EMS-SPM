@@ -3,10 +3,10 @@
   <h2 style="padding-top: 10px" *ngIf="mode == 'create'">ADD NEW EMPLOYEE</h2>
   <h2 style="padding-top: 10px" *ngIf="mode == 'edit'">UPDATE EMPLOYEE</h2>
   <br /><br />
-  <div class="container-fluid">
+  <div class="container-fluid" >
     <h4 class="text-center" style="padding-top: 10px">Personal Information</h4>
     <br />
-    <form #emp="ngForm" (ngSubmit)="onSubmit()">
+    <form #emp="ngForm" (ngSubmit)="onSubmit()" >
       <div style="width: 100%;">
         <div style="display: flex; justify-content: center; width: 100%;">
           <button type="button" mat-raised-button (click)="fileInput.click()">Upload Profile Image</button>
@@ -15,13 +15,13 @@
         <p style="text-align: center; color: red;">{{fileName}}</p>
         <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
       </div>
-
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Employee Name</mat-label>
         <input required id="fullName" name="fullName" #fullName="ngModel"
           [ngModel]="demoBtnClicked ? employees.fullName : empDetails?.fullName" matInput />
+          <mat-error>Please enter name</mat-error>
       </mat-form-field>
-
+      <br/><br/>
       <div style="width: 100%; display: flex; justify-content: space-between;">
         <mat-form-field style="width: 33%" class="example-full-width" appearance="fill">
           <mat-label>Date of Birth</mat-label>
@@ -29,7 +29,7 @@
             [ngModel]="demoBtnClicked ? employees.dob : empDetails?.dob" matInput [matDatepicker]="dojpicker">
           <mat-datepicker-toggle matSuffix [for]="dojpicker"></mat-datepicker-toggle>
           <mat-datepicker #dojpicker></mat-datepicker>
-
+          <mat-error>Please select date</mat-error>
         </mat-form-field>
         <mat-form-field style="width: 33%" class="example-full-width" appearance="fill">
           <mat-label>NIC</mat-label>
@@ -38,6 +38,7 @@
           <mat-error *ngIf="nic.errors?.nicInvalid">
             Please enter a valid NIC
           </mat-error>
+          <mat-error *ngIf="!nic.errors?.nicInvalid">Please enter nic</mat-error>
         </mat-form-field>
         <mat-form-field style="width: 33%" appearance="fill">
           <mat-label>Gender</mat-label>
@@ -46,29 +47,33 @@
             <mat-option value="Male"> Male </mat-option>
             <mat-option value="Female"> Female </mat-option>
           </mat-select>
+          <mat-error>Please select gender</mat-error>
         </mat-form-field>
 
       </div>
+      <br/><br/>
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Address</mat-label>
         <input required id="address" name="address" #address="ngModel"
           [ngModel]="demoBtnClicked ? employees.address : empDetails?.address" matInput />
+          <mat-error>Please enter address</mat-error>
       </mat-form-field>
-      <br />
+      <br/><br/>
       <div style="width: 100%; display: flex; justify-content: space-between;">
         <mat-form-field style="width: 45%" class="example-full-width" appearance="fill">
           <mat-label>Contact Number</mat-label>
           <input required id="cnumber" pattern="^\d{10}$" name="cnumber" #cnumber="ngModel"
             [ngModel]="demoBtnClicked ? employees.cnumber : empDetails?.cnumber" matInput />
-
+            <mat-error>Please enter contact number</mat-error>
         </mat-form-field>
         <mat-form-field style="width: 50%" class="example-full-width" appearance="fill">
           <mat-label>Email Address</mat-label>
           <input type="email" required id="email" name="email" #email="ngModel"
             [ngModel]="demoBtnClicked ? employees.email : empDetails?.email" matInput />
-
+            <mat-error>Please enter email</mat-error>
         </mat-form-field>
       </div>
+      <br/><br/>
       <h4 class="text-center" style="padding-top: 10px">Job Related Information</h4>
       <br />
       <mat-form-field style="width: 100%" appearance="fill">
@@ -77,23 +82,27 @@
           [ngModel]="demoBtnClicked ? employees.designation : empDetails?.designation">
           <mat-option *ngFor="let data of checkboxesDataList" [value]="data">{{data}}</mat-option>
         </mat-select>
+        <mat-error>Please select designation</mat-error>
       </mat-form-field>
+      <br/><br/>
       <mat-form-field style="width: 33%" class="example-full-width" appearance="fill">
         <mat-label>Date of Joining</mat-label>
         <input required id="doj" name="doj" #doj="ngModel" [ngModel]="demoBtnClicked ? employees.doj : empDetails?.doj"
           matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-
+        <mat-error>Please select date</mat-error>
       </mat-form-field>
+      <br/><br/>
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
-        <mat-label>Special Medical Concerns</mat-label>
-        <textarea required id="reason" name="reason" #reason="ngModel"
+        <mat-label>Special Medical Concerns (optional)</mat-label>
+        <textarea id="reason" name="reason" #reason="ngModel"
           [ngModel]="demoBtnClicked ? employees.reason : empDetails?.reason" rows="7" matInput></textarea>
+          <mat-error>Please enter reason</mat-error>
       </mat-form-field>
-      <br />
-      <div class="text-center" style="width: 100%">
-        <button mat-raised-button color="warn">PUBLISH</button>
+      <br/><br/>
+      <div  class="text-center" style="width: 100%">
+        <button mat-raised-button color="warn">REGISTER</button>
       </div>
     </form>
   </div>

@@ -53,7 +53,6 @@ export class AddEmployeeComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    console.log(this.nicx);
     //Below condition checks whether the URL has an ID
     this.route.paramMap.subscribe(((paramMap: ParamMap) => {
       //Checks whether the ID is in the URL
@@ -81,11 +80,6 @@ export class AddEmployeeComponent implements OnInit {
 
     }));
 
-  }
-
-
-  onChange(){
-    console.log(this.nicx);
   }
 
   async onFileSelected(event){
