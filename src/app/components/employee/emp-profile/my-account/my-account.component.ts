@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-account.component.css']
 })
 export class MyAccountComponent implements OnInit {
+  empDetails!: any;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.empDetails = JSON.parse(localStorage.getItem('empDetails'));
   }
 
 }

@@ -1,1 +1,62 @@
-<p>my-account works!</p>
+<div style="padding: 40px; padding-left: 80px; padding-right: 80px; width: 100%">
+  <mat-card style="width: 100%; border-radius: 10px 10px 10px 10px; box-shadow: 5px 5px 5px #888888;" id="matCard">
+    <mat-card-title style="display: flex; justify-content: start; align-items: center;">
+      <img [src]="empDetails.imgUrl || '../../../../../assets/images/dp.png'" style="margin: 0; border-radius: 100%; margin-right: 20px;" width="100px" height="100px"/>
+      <div style="flex-direction: column; line-height: 0.5rem; margin-right: 50px;">
+        <h1>
+          {{empDetails.fullName}}
+        </h1>
+        <p style="margin-left: 5px;color: grey; text-transform:uppercase; font-size: large;">
+          {{empDetails.empDes}}
+        </p>
+        <p style="margin-left: 5px;color: grey; text-transform:uppercase; font-size: large;">
+          {{empDetails.empID}}
+        </p>
+      </div>
+      <div style="width: '100%'; display: flex;justify-content: space-between;">
+        <h5>Date of Joining:- {{empDetails.doj}}</h5>
+        <h5>{{empDetails.email}}</h5>
+      </div>
+
+    </mat-card-title>
+    <hr/>
+    <br/>
+    <mat-card-content>
+      <div style="display: flex; margin-bottom: 20px;">
+        <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon"> contacts
+        </mat-icon>
+        <h5>
+          <strong>NIC</strong>:- {{empDetails.nic}}
+        </h5>
+      </div>
+      <div style="display: flex; margin-bottom: 20px;">
+        <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon"> location_on
+        </mat-icon>
+        <h5>
+          <strong>Address</strong>:- {{empDetails.address}}
+        </h5>
+      </div>
+      <div style="display: flex; margin-bottom: 20px;">
+        <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">call
+        </mat-icon>
+        <h5>
+          <strong>Contact Number</strong>:- {{empDetails.cnumber}}
+        </h5>
+      </div>
+      <div style="display: flex; margin-bottom: 20px;">
+        <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">person
+        </mat-icon>
+        <h5>
+          <strong>Gender</strong>:- {{empDetails.gender}}
+        </h5>
+      </div>
+      <div style="display: flex; margin-bottom: 20px;">
+        <mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">cake
+        </mat-icon>
+        <h5>
+          <strong>Date of Birth</strong>:- {{empDetails.dob}}
+        </h5>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
