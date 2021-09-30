@@ -1,80 +1,85 @@
 <div style="padding: 40px; width: 100%; height: 100%;">
-    <div style="width: 100%;display: flex; justify-content: space-between;">
-      <h1>Attendance Management</h1>
-      <div style="width: 50%;">
-        <mat-form-field style="width: 80%; padding-right: 10px;" class="example-full-width" appearance="fill">
-          <mat-label>Search By Date</mat-label>
-          <input matInput id="searchDate" name="searchDate" #searchDate="ngModel" [ngModel]
-          [matDatepicker]="searchdate">
-        <mat-datepicker-toggle matSuffix [for]="searchdate"></mat-datepicker-toggle>
-        <mat-datepicker #searchdate></mat-datepicker>
-        </mat-form-field>
-        <button mat-raised-button color="primary" style="height: 40%;" (click)="onSearchByDate(searchDate.value)">Search</button>
-  
-      </div>
-    </div>
-    <br>
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
-    <div id="dataSet" style="height:100vh; width: 100%" *ngIf="!isLoading">
-      <div class="container pull-left" style=" width: 100%; height: 100%;">
-        <table style="width: 100%;" mat-table [dataSource]="filteredAttendances" class="mat-elevation-z8">
-  
-          <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-  
-          <!-- Position Column -->
-          <ng-container matColumnDef="fullName">
-            <th mat-header-cell *matHeaderCellDef>Full Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
-          </ng-container>
-  
-          <!-- Name Column -->
-          <ng-container matColumnDef="nic">
-            <th mat-header-cell *matHeaderCellDef> NIC </th>
-            <td mat-cell *matCellDef="let element"> {{element.nic}} </td>
-          </ng-container>
-  
-          <!-- Weight Column -->
-          <ng-container matColumnDef="empID">
-            <th mat-header-cell *matHeaderCellDef> EMP ID </th>
-            <td mat-cell *matCellDef="let element"> {{element.empID}} </td>
-          </ng-container>
-  
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef> Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-          </ng-container>
-  
-          <ng-container matColumnDef="designation">
-            <th mat-header-cell *matHeaderCellDef> Designation </th>
-            <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
-          </ng-container>
-  
-          <ng-container matColumnDef="arriveTime">
-            <th mat-header-cell *matHeaderCellDef> Arrive Time </th>
-            <td mat-cell *matCellDef="let element"> {{element.arriveTime}} </td>
-          </ng-container>
-  
-          <ng-container matColumnDef="leaveTime">
-            <th mat-header-cell *matHeaderCellDef> Leave Time </th>
-            <td mat-cell *matCellDef="let element"> {{element.leaveTime}} </td>
-          </ng-container>
-  
-          <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> Action </th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-raised-button color="warn" [routerLink]="['../edit', element.id]">Edit</button>
-            </td>
-          </ng-container>
-  
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-            <button mat-raised-button color="warn">DELETE</button>
-          </tr>
-        </table>
-  
-      </div>
+  <div style="width: 100%;display: flex; justify-content: space-between;">
+    <h1>Attendance Management</h1>
+    <div style="width: 50%;">
+      <mat-form-field style="width: 80%; padding-right: 10px;" class="example-full-width" appearance="fill">
+        <mat-label>Search By Date</mat-label>
+        <input matInput id="searchDate" name="searchDate" #searchDate="ngModel" [ngModel]
+        [matDatepicker]="searchdate">
+      <mat-datepicker-toggle matSuffix [for]="searchdate"></mat-datepicker-toggle>
+      <mat-datepicker #searchdate></mat-datepicker>
+      </mat-form-field>
+      <button mat-raised-button color="primary" style="height: 40%;" (click)="onSearchByDate(searchDate.value)">Search</button>
+
     </div>
   </div>
-  
+  <br>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <div *ngIf="noData" style="width: 100%;display: flex; justify-content: center; align-items: center;">
+
+    <ng-lottie width="500px" height="500px" *ngIf="noData" [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+  </div>
+  <button *ngIf="!isLoading && !noData" style="margin-left: 30px;" mat-raised-button color="primary" type="button" (click)="generateReport()">Download Report</button>
+  <br/><br/>
+  <div id="dataSet" style="height:100vh; width: 100%" *ngIf="!isLoading && !noData">
+    <div class="container pull-left" style=" width: 100%; height: 100%;">
+      <table style="width: 100%;" mat-table [dataSource]="filteredAttendances" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="fullName">
+          <th mat-header-cell *matHeaderCellDef>Full Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="nic">
+          <th mat-header-cell *matHeaderCellDef> NIC </th>
+          <td mat-cell *matCellDef="let element"> {{element.nic}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="empID">
+          <th mat-header-cell *matHeaderCellDef> EMP ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.empID}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="designation">
+          <th mat-header-cell *matHeaderCellDef> Designation </th>
+          <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="arriveTime">
+          <th mat-header-cell *matHeaderCellDef> Arrive Time </th>
+          <td mat-cell *matCellDef="let element"> {{element.arriveTime}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="leaveTime">
+          <th mat-header-cell *matHeaderCellDef> Leave Time </th>
+          <td mat-cell *matCellDef="let element"> {{element.leaveTime}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button color="warn" [routerLink]="['../edit', element.id]">Edit</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+          <button mat-raised-button color="warn">DELETE</button>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>

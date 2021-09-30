@@ -3,7 +3,7 @@ const router = express.Router();
 
 const leaveController = require("../controllers/leave-controller");
 
-router.post("/AddNewLeave", leaveController.addNewLeave);
+router.post("/add-leave", leaveController.addNewLeave);
 router.get("/getLeaves", leaveController.getLeaves);
 router.get("/getLeaveByID/:id", leaveController.getLeaveByID);
 router.put("/updateLeave/:id", leaveController.updateLeave);

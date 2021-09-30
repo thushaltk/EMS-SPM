@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   announcements: Announcements[] = [];
   employees: Employees[] = [];
   attendances: Attendance[] = [];
+  filteredAttendances: Attendance[]=[];
   today: Date = new Date();
   totEmployees!: number;
   totAttendance!: number;
@@ -34,7 +35,7 @@ export class DashboardComponent implements OnInit {
     private attendanceService: AttendanceService) {
     let y = this.today.getFullYear();
     let m = this.today.getMonth();
-    let d = this.today.getDay();
+    let d = this.today.getDate();
     let sDate = y + '-' + (m + 1) + '-' + d;
 
     this.employees = this.employeeService.getEmployee();
@@ -49,17 +50,22 @@ export class DashboardComponent implements OnInit {
     this.attendances = this.attendanceService.getAttendance();
     this.subscription = this.attendanceService.attendanceChanged.subscribe(
       (attendances: Attendance[]) => {
-        this.attendances = attendances.filter((attData) => attData.date == sDate);
+        this.filteredAttendances = attendances.filter((attData) => attData.date == sDate);
 
-        this.totAttendance = this.attendances.length;
+        this.totAttendance = this.filteredAttendances.length;
 
         this.totAbsent = this.totEmployees - this.totAttendance;
+        console.log(this.totAbsent)
       }
     );
 
   }
 
   ngOnInit() {
+    let y = this.today.getFullYear();
+    let m = this.today.getMonth();
+    let d = this.today.getDate();
+    let sDate = y + '-' + (m + 1) + '-' + d;
 
     this.isLoading = true;
     this.announcements = this.announcementService.getAnnouncement();
@@ -77,7 +83,19 @@ export class DashboardComponent implements OnInit {
         this.trainingPrograms = trainingPrograms;
 
       }
-    )
+    );
+
+    this.attendances = this.attendanceService.getAttendance();
+    this.subscription = this.attendanceService.attendanceChanged.subscribe(
+      (attendances: Attendance[]) => {
+        this.filteredAttendances = attendances.filter((attData) => attData.date == sDate);
+
+        this.totAttendance = this.filteredAttendances.length;
+
+        this.totAbsent = this.totEmployees - this.totAttendance;
+        console.log(this.totAbsent)
+      }
+    );
 
   }
 

@@ -26,7 +26,7 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { EmpProfileComponent } from './components/employee/emp-profile/emp-profile.component';
 import { LeavesComponent } from './components/leaves/leaves.component';
 import { ApplyLeaveComponent } from './components/leaves/apply-leave/apply-leave.component';
-import { ViewLeaveComponent } from './components/leaves/view-leave/view-leave.component';
+import { ViewLeavesComponent } from './components/leaves/view-leaves/view-leaves.component';
 import { AddEmployeeComponent } from './components/employee/add-employee/add-employee.component';
 import { AttendanceComponent } from './components/attendance/attendance.component';
 import { AddAttendanceComponent } from './components/attendance/add-attendance/add-attendance.component';
@@ -41,6 +41,7 @@ import { ViewTrainingProgramsComponent } from './components/training-programs/vi
 import { NicValidationDirective } from './directives/nic-validation-directive';
 import { EmpReportComponent } from './components/employee/emp-report/emp-report.component';
 import { MyAccountComponent } from './components/employee/emp-profile/my-account/my-account.component';
+import { EmpLeaveComponent } from './components/employee/emp-leave/emp-leave.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { MyAccountComponent } from './components/employee/emp-profile/my-account
     EmpProfileComponent,
     LeavesComponent,
     ApplyLeaveComponent,
-    ViewLeaveComponent,
+    ViewLeavesComponent,
     AddEmployeeComponent,
     AttendanceComponent,
     AddAttendanceComponent,
@@ -72,7 +73,8 @@ import { MyAccountComponent } from './components/employee/emp-profile/my-account
     ViewTrainingProgramsComponent,
     NicValidationDirective,
     EmpReportComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    EmpLeaveComponent
   ],
   imports: [
     AppRoutingModule,

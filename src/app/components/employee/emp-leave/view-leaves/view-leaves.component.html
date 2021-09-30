@@ -1,0 +1,63 @@
+<div style="width: 100%; height: 100%;">
+    <div
+      style="display: flex; justify-content: center; flex-direction: column;width: 100%; text-align: center; align-items: center;">
+      <br>
+      <br>
+      <h1>View applied leaves</h1>
+      <br>
+      <div style="width: 100%; display: flex; justify-content: center; align-items: center;">
+        <mat-spinner diameter="60" *ngIf="isLoading"></mat-spinner>
+      </div>
+      <div *ngIf="!isLoading" style="width: 50%; display: flex; justify-content: center; align-items: center;">
+        <mat-form-field style="width: 100%; padding-right: 40px;" class="example-full-width" appearance="fill">
+          <mat-label>Search By Start Date</mat-label>
+          <input matInput id="searchDate" name="searchDate" #searchDate="ngModel" [ngModel] [matDatepicker]="searchdate">
+          <mat-datepicker-toggle matSuffix [for]="searchdate"></mat-datepicker-toggle>
+          <mat-datepicker #searchdate></mat-datepicker>
+        </mat-form-field>
+        <button mat-raised-button color="primary" style="width: '20%';height: 40%;"
+          (click)="onSearchByDate(searchDate.value)">Search</button>
+  
+      </div>
+      <br />
+      <mat-card *ngIf="!isLoading"
+        style="width: 80%; border-radius: 10px 10px 10px 10px; box-shadow: 5px 5px 5px #888888;">
+  
+  
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col" class="text-center">Time</th>
+              <th scope="col" class="text-center">Start Date</th>
+              <th scope="col" class="text-center">End Date</th>
+              <th scope="col" class="text-center">Reason</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col" class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let leave of filteredLeaves">
+              <td>{{leave.time}}</td>
+              <td>{{leave.startDate}}</td>
+              <td>{{leave.endDate}}</td>
+              <td>{{leave.reason}}</td>
+              <td [ngStyle]="{color: leave.status === 'APPROVED' ? 'green' : 'red'}">{{leave.status}}</td>
+              <td>
+                <a class="btn btn-danger pull-right" (click)="onDelete(leave.id)">DELETE</a>
+              </td>
+            </tr>
+            <tr *ngIf="noData" style="color:red;">
+              <td colspan="6" >
+                <div style="width: 100%;display: flex; justify-content: center; align-items: center;">
+  
+                  <ng-lottie width="500px" height="500px" *ngIf="noData" [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+                </div>
+              </td>
+            </tr>
+  
+          </tbody>
+        </table>
+      </mat-card>
+      <br/><br/><br/>
+    </div>
+  
