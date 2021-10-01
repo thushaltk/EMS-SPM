@@ -2,24 +2,25 @@
   <br />
   <h2 class="text-center" style="padding-top: 10px">Create New Announcement</h2>
   <br /><br />
-  <div class="container-fluid">
+  <div class="container-fluid" style="line-height: 6rem;" >
     <form #ann="ngForm" (ngSubmit)="onSubmit()">
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Announcement Title</mat-label>
         <input matInput required id="title" name="title" #title="ngModel" [ngModel]="demoBtnClicked ? announcements.title : announcementsDetails?.title" />
+        <mat-error>Please enter title</mat-error>
       </mat-form-field>
-
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Date published</mat-label>
         <input [min]="minDate" matInput required id="datePublished" name="datePublished" #datePublished="ngModel" [ngModel]="announcementsDetails?.date"
           [matDatepicker]="annpicker">
         <mat-datepicker-toggle matSuffix [for]="annpicker"></mat-datepicker-toggle>
         <mat-datepicker #annpicker></mat-datepicker>
-
+        <mat-error>Please enter date</mat-error>
       </mat-form-field>
       <mat-form-field style="width: 100%" class="example-full-width" appearance="fill">
         <mat-label>Content</mat-label>
         <textarea rows="7" matInput required id="content" name="content" #content="ngModel"[ngModel]="demoBtnClicked ? announcements.content : announcementsDetails?.content"></textarea>
+        <mat-error>Please enter content</mat-error>
       </mat-form-field>
       <br />
       <mat-form-field style="width: 100%" appearance="fill">
@@ -28,6 +29,7 @@
           <mat-option value="High"> High </mat-option>
           <mat-option value="Normal"> Normal </mat-option>
         </mat-select>
+        <mat-error>Please select priority</mat-error>
       </mat-form-field>
       <mat-form-field style="width: 100%" appearance="fill">
         <mat-label>Validity</mat-label>
@@ -36,6 +38,7 @@
           <mat-option value="2 week"> 2 week </mat-option>
           <mat-option value="3 week"> 3 week </mat-option>
         </mat-select>
+        <mat-error>Please select validity</mat-error>
       </mat-form-field>
       <div class="text-center" style="width: 100%">
         <button mat-raised-button color="warn">PUBLISH</button>

@@ -22,14 +22,14 @@ import { ViewAttendanceComponent } from './components/attendance/view-attendance
 import { ViewTrainingProgramsComponent } from './components/training-programs/view-training-programs/view-training-programs.component';
 import { EmpReportComponent } from './components/employee/emp-report/emp-report.component';
 import { MyAccountComponent } from './components/employee/emp-profile/my-account/my-account.component';
-//import { EmpAnnouncementsComponent } from './components/employee/emp-profile/emp-announcements/emp-announcements.component';
-//import { EmpTrainingProgramsComponent } from './components/employee/emp-profile/emp-training-programs/emp-training-programs.component';
+import { EmpAnnouncementsComponent } from './components/employee/emp-profile/emp-announcements/emp-announcements.component';
+import { EmpTrainingProgramsComponent } from './components/employee/emp-profile/emp-training-programs/emp-training-programs.component';
 import { EmpLeaveComponent } from './components/employee/emp-profile/emp-leave/emp-leave.component';
 import { ApplyLeaveComponent } from './components/employee/emp-profile/emp-leave/apply-leave/apply-leave.component';
 import { ViewLeaveComponent } from './components/employee/emp-profile/emp-leave/view-leave/view-leave.component';
 import { ViewLeavesComponent } from './components/leaves/view-leaves/view-leaves.component';
-//import { AnnouncementReportComponent } from './components/announcements/announcement-report/announcement-report.component';
-//import { TrainingProgramsReportComponent } from './components/training-programs/training-programs-report/training-programs-report.component';
+import { AnnouncementReportComponent } from './components/announcements/announcement-report/announcement-report.component';
+import { TrainingProgramsReportComponent } from './components/training-programs/training-programs-report/training-programs-report.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
@@ -51,7 +51,7 @@ const appRoutes: Routes = [
           { path: 'add', component: AddAnnouncementComponent },
           { path: 'view', component: ViewAnnouncementsComponent },
           { path: 'edit/:annID', component: AddAnnouncementComponent },
-          //{ path: 'report', component: AnnouncementReportComponent }
+          { path: 'report', component: AnnouncementReportComponent }
         ],
       },
       {
@@ -61,7 +61,7 @@ const appRoutes: Routes = [
           { path: 'add', component: AddTrainingProgramsComponent },
           { path: 'view', component: ViewTrainingProgramsComponent },
           { path: 'edit/:tpID', component: AddTrainingProgramsComponent },
-          //{ path: 'report', component: TrainingProgramsReportComponent }
+          { path: 'report', component: TrainingProgramsReportComponent }
         ],
       },
       {
@@ -91,8 +91,8 @@ const appRoutes: Routes = [
       {
         path: 'empProfile/:id', component: EmpProfileComponent, children: [
           { path: 'account', component: MyAccountComponent },
-          //{ path: 'announcements', component: EmpAnnouncementsComponent },
-          //{ path: 'training-programs', component: EmpTrainingProgramsComponent },
+          { path: 'announcements', component: EmpAnnouncementsComponent },
+          { path: 'training-programs', component: EmpTrainingProgramsComponent },
           { path: 'leave', component: EmpLeaveComponent, children: [
             { path: 'apply', component: ApplyLeaveComponent },
             { path: 'view', component: ViewLeaveComponent },

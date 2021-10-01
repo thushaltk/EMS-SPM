@@ -103,9 +103,13 @@ export class TrainingProgramsService {
 
   deleteTrainingProgram(trainingID: string) {
     this.http
-      .delete('http://localhost:5000/api/training-programs/' + trainingID)
+      .delete('http://localhost:5000/api/training-programs/deleteTrainingProgram/' + trainingID)
       .subscribe(() => {
-        console.log('Deleted');
+        const updatedPosts = this.trainingProgramsArr.filter(
+          (tp) => tp.id !== trainingID
+        );
+        this.trainingProgramsArr = updatedPosts;
+        this.trainingProgamsChanged.next(this.trainingProgramsArr.slice());
       });
   }
 }
