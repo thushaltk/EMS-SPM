@@ -115,4 +115,8 @@ export class AddAttendanceComponent implements OnInit {
       })
   }
 
+  clear() {
+    window.location.reload();
+  }
+
 }
