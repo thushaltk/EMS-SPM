@@ -1,0 +1,27 @@
+<div style="overflow-y: scroll; width: fit-content;  height: 100vh">
+  <br><br>
+  <button style="margin-left: 30px;" mat-raised-button color="primary" type="button" (click)="generateReport()">Download Report</button>
+  <br><br>
+  <table class="table" id="tbl" width="100%">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Validity</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let announcement of announcements">
+        <th scope="row">{{announcement.title}}</th>
+        <td>{{announcement.content}}</td>
+        <td>{{announcement.priority}}</td>
+        <td>{{announcement.validity}}</td>
+        <td>{{announcement.date}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>

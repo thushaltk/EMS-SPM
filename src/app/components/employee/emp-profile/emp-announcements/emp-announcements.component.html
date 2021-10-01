@@ -39,12 +39,7 @@
             </mat-icon>
             <strong>Validity</strong>:- {{announcement.validity}}
           </div>
-          <div style="width: 100%; display: flex; justify-content: flex-end;">
-            <button mat-raised-button color="primary" [routerLink]="['../edit', announcement.id]"
-              style="margin-right: 10px;">EDIT</button>
-            <button mat-raised-button color="warn" (click)="onDelete(announcement.id)">DELETE</button>
 
-          </div>
         </div>
       </div>
     </div>

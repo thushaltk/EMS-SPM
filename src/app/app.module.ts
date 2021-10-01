@@ -49,6 +49,8 @@ import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { TrainingProgramsReportComponent } from './components/training-programs/training-programs-report/training-programs-report.component';
 import { EmpTrainingProgramsComponent } from './components/employee/emp-profile/emp-training-programs/emp-training-programs.component';
+import { AnnouncementReportComponent } from './components/announcements/announcement-report/announcement-report.component';
+import { EmpAnnouncementsComponent } from './components/employee/emp-profile/emp-announcements/emp-announcements.component';
 
 
 export function playerFactory() {
@@ -89,7 +91,9 @@ export function playerFactory() {
     EmpLeaveComponent,
     ApplyLeaveComponent,
     TrainingProgramsReportComponent,
-    EmpTrainingProgramsComponent
+    EmpTrainingProgramsComponent,
+    AnnouncementReportComponent,
+    EmpAnnouncementsComponent
   ],
   imports: [
     AppRoutingModule,
