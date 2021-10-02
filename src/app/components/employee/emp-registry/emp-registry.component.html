@@ -10,7 +10,7 @@
         <mat-label>Search</mat-label>
         <input required id="fullName" name="fullName" #fullName="ngModel" [(ngModel)]="search" matInput />
       </mat-form-field>
-      <button style="height: 90%; margin-top: 15px;" mat-raised-button color="primary" [routerLink]="['../report']" >GENERATE REPORT</button>
+      <button style="height: 90%; margin-top: 15px;" mat-raised-button color="primary" [routerLink]="['../report/'+designation]" >GENERATE REPORT</button>
     </div>
     <div style="width: 100%;">
       <table style="width: 100%;" mat-table [dataSource]="employees | filter: search" class="mat-elevation-z8" >

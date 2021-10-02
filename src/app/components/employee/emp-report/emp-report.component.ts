@@ -31,23 +31,23 @@ export class EmpReportComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has("designation")) {
         this.designation = paramMap.get("designation");
-        if (this.designation == 'manager') {
+        if (this.designation == 'Manager') {
           this.title = "Managers";
-        } else if (this.designation == 'engineer') {
+        } else if (this.designation == 'Engineer') {
           this.title = "Engineers";
-        } else if (this.designation == 'itoperator') {
+        } else if (this.designation == 'IToperator') {
           this.title = "IT Operators";
-        } else if (this.designation == 'accountant') {
+        } else if (this.designation == 'Accountant') {
           this.title = "Accountants";
-        } else if (this.designation == 'supervisor') {
+        } else if (this.designation == 'Supervisor') {
           this.title = "Supervisors";
-        } else if (this.designation == 'labor') {
+        } else if (this.designation == 'Labor') {
           this.title = "Labors";
-        } else if (this.designation == 'driver') {
+        } else if (this.designation == 'Driver') {
           this.title = "Drivers";
-        } else if (this.designation == 'cleaningstaff') {
+        } else if (this.designation == 'Cleaningstaff') {
           this.title = "Cleaning Staff";
-        } else if (this.designation == 'securitystaff') {
+        } else if (this.designation == 'Securitystaff') {
           this.title = "Security Staff";
         }
         this.employees = this.employeeService.getEmployeeByDesignation(this.designation);
@@ -95,13 +95,13 @@ export class EmpReportComponent implements OnInit, OnDestroy {
         var img = canvas.toDataURL("image/png");
         var doc = new jsPDF.jsPDF();
         let image = new Image();
-        image.src = 'assets/images/logo.png';
+        image.src = 'assets/images/logo.jpg';
         var imgHeight = canvas.height * 210 / canvas.width;
         var text = desig + " Report";
         doc.text(text, 55, 15);
         doc.addImage(image, 10, 5, 40, 20);
         doc.addImage(img, 0, 30, 210, imgHeight);
-        doc.save('EmployeesReport.pdf');
+        doc.save(`${desig}Report.pdf`);
       });
     }, 1500)
   }
