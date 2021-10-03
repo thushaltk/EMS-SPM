@@ -68,7 +68,7 @@
         </mat-form-field>
         <mat-form-field style="width: 50%" class="example-full-width" appearance="fill">
           <mat-label>Email Address</mat-label>
-          <input type="email" required id="email" name="email" #email="ngModel"
+          <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" required id="email" name="email" #email="ngModel"
             [ngModel]="demoBtnClicked ? employees.email : empDetails?.email" matInput />
             <mat-error>Please enter email</mat-error>
         </mat-form-field>
