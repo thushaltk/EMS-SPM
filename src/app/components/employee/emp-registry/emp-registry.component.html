@@ -8,7 +8,7 @@
     <div style="display: flex;">
       <mat-form-field style="width: 30%; margin-right: 20px;" class="example-full-width" appearance="fill">
         <mat-label>Search</mat-label>
-        <input required id="fullName" name="fullName" #fullName="ngModel" [(ngModel)]="search" matInput />
+        <input id="fullName" name="fullName" #fullName="ngModel" [(ngModel)]="search" matInput />
       </mat-form-field>
       <button style="height: 90%; margin-top: 15px;" mat-raised-button color="primary" [routerLink]="['../report/'+designation]" >GENERATE REPORT</button>
     </div>
